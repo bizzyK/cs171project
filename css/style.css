@@ -5,13 +5,13 @@
     --color-profile: srgb;
     --color-mode: light;
     --color-text: #000000;
-    --color-background: rgba(255, 255, 255, 0.84);
+    --color-background: rgba(0, 0, 0, 0.84);
     --text-background: rgba(255, 255, 255, 0.84);
-    --myshadow: .1rem .1rem .1rem rgba(255, 255, 255, 0.76);
+    --myshadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.78);
 
-    --color-primary: #7CCCE5;
-    --color-secondary: #B576AD;
-    --color-accent: #E04644;
+    --color-primary: rgba(124, 204, 229, 0.5);
+    --color-secondary: rgba(181, 118, 173, 0.5);
+    --color-accent: rgba(224, 70, 68, 0.5);
 
 
     --background1: linear-gradient(var(--color1), #000000);
@@ -73,6 +73,7 @@ body {
     margin-bottom: 20px;
     font-weight: bolder;
     color: white;
+    text-shadow: var(--myshadow);
     margin-outside: 20%;
 }
 
@@ -115,6 +116,17 @@ strong {
     /*margin-right: auto;*/
     /*margin-left: auto;*/
 }
+
+.black-background-container {
+    background-color: var(--color-background); /* Black background */
+    color: #fff; /* White text color for contrast */
+    height: 500px;
+    width: 80%; /* Set a fixed width or percentage as per your design */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
 
 .container-bottom {
     z-index: 100;
@@ -204,7 +216,7 @@ strong {
 /*----------------------------------------------*/
 
 #the-rise-of-industrial-real-estate-development {
-    background-image: url(../img/1.jpeg);
+    background-image: url(../img/cityscape.png);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -424,5 +436,22 @@ strong {
     background-color: var(--color-secondary);
     background-image: url("../img/email.png");
     background-size: 200px 200px;
-    background-position: top 50px right 50%;
+    background-position: bottom 50px left 25%;
+}
+
+.acknowledgments-container {
+    column-count: 2;
+    column-gap: 40px; /* Adjust the gap as necessary */
+    -webkit-column-count: 2; /* For Safari and Chrome */
+    -webkit-column-gap: 40px; /* For Safari and Chrome */
+    -moz-column-count: 2; /* For Firefox */
+    -moz-column-gap: 40px; /* For Firefox */
+}
+
+/* Additional styles to ensure text split does not break the flow */
+.acknowledgments-container p,
+.acknowledgments-container h3 {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
 }
