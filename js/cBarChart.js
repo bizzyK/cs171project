@@ -70,7 +70,6 @@ class cBarChart {
         vis.svg.append("g")
             .attr("class", "y-axis axis");
 
-        // TODO might need to move this down to updatevis later? or maybe it's fine here...
         // Scale the range of the data
         // think about vis.x, may need to set some kind of static domain like [-100, 100]
         // vis.x.domain([d3.min(vis.market_change_data, d => d.change), d3.max(vis.market_change_data, d => d.change)]);
@@ -123,6 +122,13 @@ class cBarChart {
             .text(d => d)
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle");
+
+        // Initialize title
+        vis.graphTitle = vis.svg.append('text')
+            .attr("class", "graph-title")
+            .attr("x", -200)
+            .attr("y", -10)
+            .text("Change in Consumer Spending from 1980-01-01 to 2023-09-01");
         
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -204,8 +210,16 @@ class cBarChart {
             return d.date >= selectionStart && d.date <= selectionEnd;
         });
 
+        // Format the selected dates as "YYYY-mm-dd"
+        const formattedStartDate = d3.timeFormat("%Y-%m-%d")(selectionStart);
+        const formattedEndDate = d3.timeFormat("%Y-%m-%d")(selectionEnd);
+
+        // Update graph title
+        vis.graphTitle.text(`Change in Consumer Spending from ${formattedStartDate} to ${formattedEndDate}`);
+
         // Create dataset but with new filtered data
         vis.market_change_data = createConsumerData(vis.filteredData);
         vis.wrangleData();
     }
+
 }

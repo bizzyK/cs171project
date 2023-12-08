@@ -11,7 +11,7 @@ class LineChart {
     initVis() {
         let vis = this;
 
-        vis.margin = { top: 25, right: 25, bottom: 30, left: 50 };
+        vis.margin = { top: 50, right: 25, bottom: 30, left: 50 };
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = 200 - vis.margin.top - vis.margin.bottom;
@@ -56,56 +56,16 @@ class LineChart {
         vis.svg.append("g")
             .attr("class", "y-axis axis");
 
-        // // Axis title
-        // vis.svg.append("text")
-        //     .attr("x", -50)
-        //     .attr("y", -8)
-        //     .text("Votes");
-
-        // // Append a path for the line
-        // vis.line = d3.line()
-        //     .x(d => vis.x(d.date))
-        //     .y(d => vis.y(d.gdp_yy_chg));
-        //
-        // vis.svg.append("path")
-        //     // .datum(vis.data)
-        //     .data([vis.data])
-        //     .attr("class", "line")
-        //     .attr("d", vis.line);
-
-        // Add the line
-        vis.svg.append("path")
-            .datum(vis.data)
-            .attr("fill", "none")
-            .attr("stroke", "var(--color-text)")
-            .attr("stroke-width", 1.5)
-            .attr("d", d3.line()
-                .x(function(d) { return vis.x(d.date) })
-                .y(function(d) { return vis.y(d.gdp_yy_chg) })
-            );
-
-        vis.currentBrushRegion = null;
-        vis.brush = d3.brushX()
-            .extent([[0,0],[vis.width, vis.height]])
-            .on("brush", function (event) {
-                // User just selected a specific region
-                vis.currentBrushRegion = event.selection;
-
-                if (vis.currentBrushRegion) {
-                    // Quantize the brush selection to quarters
-                    vis.currentBrushRegion = vis.currentBrushRegion.map(vis.x.invert);
-                    console.log(vis.currentBrushRegion);
-                }
-
-                // console.log(vis.currentBrushRegion);
-
-                // 3. Trigger the event 'selectionChanged' of our event handler
-                vis.macroEventHandler.trigger("selectionChanged", vis.currentBrushRegion);
-            });
-
-        vis.brushGroup = vis.svg.append("g")
-            .attr("class", "brush")
-            .call(vis.brush)
+        // Graph title, written like this to span two lines
+        vis.svg.append("text")
+            .attr("class", "graph-title")
+            .attr("x", -25)
+            .attr("y", -30)
+            .text("Year-over-year change ")
+            .append("tspan")
+            .attr("dx", -100)
+            .attr("dy", 15)
+            .text("in GDP(%)");
 
         const highlightedPeriods = [
             { start: new Date("1986-01-01"), end: new Date("1991-01-01"), label: "Oil Crisis" },
@@ -114,7 +74,7 @@ class LineChart {
             { start: new Date("2020-01-01"), end: new Date("2022-01-01"), label: "COVID" },
         ];
 
-        // Create area chart that highlights the crisis time periods
+        // Create area chart that highlights the crisis time periods, add it before the line chart
         vis.area = d3.area()
             .x(function(d) { return vis.x(d.date); })
             .y0(vis.height)
@@ -149,20 +109,39 @@ class LineChart {
                     .text(d.label);
             });
 
-        //
-        // // Add new highlighted areas based on the specified time periods
-        // vis.highlightedAreaGroup.selectAll(".highlighted-area")
-        //     .data(highlightedPeriods)
-        //     .enter().append("path")
-        //     .attr("class", "highlighted-area")
-        //     .attr("fill", "orange")
-        //     .attr("opacity", 0.3)
-        //     .attr("d", function(d) {
-        //         // Filter data to include only points within the current time period
-        //         const areaData = vis.data.filter(point => point.date >= d.start && point.date <= d.end);
-        //         return vis.area(areaData);
-        //     });
+        // Add the line
+        vis.svg.append("path")
+            .datum(vis.data)
+            .attr("fill", "none")
+            .attr("stroke", "var(--color-text)")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return vis.x(d.date) })
+                .y(function(d) { return vis.y(d.gdp_yy_chg) })
+            );
 
+        vis.currentBrushRegion = null;
+        vis.brush = d3.brushX()
+            .extent([[0,0],[vis.width, vis.height]])
+            .on("brush", function (event) {
+                // User just selected a specific region
+                vis.currentBrushRegion = event.selection;
+
+                if (vis.currentBrushRegion) {
+                    // Quantize the brush selection to quarters
+                    vis.currentBrushRegion = vis.currentBrushRegion.map(vis.x.invert);
+                    console.log(vis.currentBrushRegion);
+                }
+
+                // console.log(vis.currentBrushRegion);
+
+                // 3. Trigger the event 'selectionChanged' of our event handler
+                vis.macroEventHandler.trigger("selectionChanged", vis.currentBrushRegion);
+            });
+
+        vis.brushGroup = vis.svg.append("g")
+            .attr("class", "brush")
+            .call(vis.brush)
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();

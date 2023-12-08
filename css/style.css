@@ -9,6 +9,11 @@
     --text-background: rgba(255, 255, 255, 0.84);
     --myshadow: .1rem .1rem .1rem rgba(255, 255, 255, 0.76);
 
+    --color-primary: #7CCCE5;
+    --color-secondary: #B576AD;
+    --color-accent: #E04644;
+
+
     --background1: linear-gradient(var(--color1), #000000);
     --background2: linear-gradient(var(--color2), #000000);
     --background3: linear-gradient(var(--color3), #000000);
@@ -16,7 +21,7 @@
     --background5: linear-gradient(var(--color5), #000000);
     --background6: linear-gradient(var(--color6), #000000);
 
-    --color1: #7CCCE5;;
+    --color1: #7CCCE5;
     --color2: #B576AD;
     --color3: #E04644;
     --color4: #B7D968;
@@ -42,7 +47,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     font-family: 'Raleway', sans-serif;
 }
 
@@ -55,7 +60,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: var(--color-background);
+    /*background-color: var(--color-background);*/
     transition: transform 0.5s ease-in-out;
     background-repeat: no-repeat;
     background-size: contain;
@@ -66,6 +71,9 @@ body {
 .section h1 {
     font-size: 3.5em;
     margin-bottom: 20px;
+    font-weight: bolder;
+    color: white;
+    margin-outside: 20%;
 }
 
 .section h2 {
@@ -102,9 +110,10 @@ strong {
 
 .container-mid {
     top: 50%;
+    box-sizing: content-box;
     width: 90%;
-    margin-right: auto;
-    margin-left: auto;
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
 }
 
 .container-bottom {
@@ -113,8 +122,8 @@ strong {
     position: absolute;
     top: 100%;
     width: 90%;
-    margin-right: auto;
-    margin-left: auto;
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
 }
 
 /*----------------------------------------------*/
@@ -128,6 +137,7 @@ strong {
 /*----------------------------------------------*/
 /* Dot Navigation
 /*----------------------------------------------*/
+
 .dot-navigation {
     position: fixed;
     right: 18px; /* Adjust as needed */
@@ -138,11 +148,11 @@ strong {
 
 .dot-navigation .dot {
     display: block;
-    height: 10px; /* Dot size */
-    width: 10px; /* Dot size */
+    height: .75rem; /* Dot size */
+    width: .75rem; /* Dot size */
     background-color: var(--color-text);
     border-radius: 50%;
-    margin-bottom: 10px; /* Space between dots */
+    margin-bottom: .75rem; /* Space between dots */
     transition: background-color 0.3s;
 }
 
@@ -164,8 +174,10 @@ strong {
 }
 
 .section .container-fluid {
-    height: 100%;
-    width: 100%;
+    /*height: 100%;*/
+    /*width: 100%;*/
+    box-sizing: content-box;
+    width: 90%;
 }
 
 .source {
@@ -174,10 +186,10 @@ strong {
     margin-bottom: 2vh;
 }
 
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
+/*.img-fluid {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*}*/
 
 /*----------------------------------------------*/
 /* Legend
@@ -202,7 +214,7 @@ strong {
 /*----------------------------------------------*/
 
 #market-overview {
-    background-color: #99ff99;
+    background-color: var(--color-primary);
     background-image: url("../img/canada_leaf_location_map_icon.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -214,7 +226,7 @@ strong {
 /*----------------------------------------------*/
 
 #driving-factors {
-    background-color: #ffcc66;
+    background-color: var(--color-secondary);
     background-image: url("../img/macroeconomic.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -226,7 +238,7 @@ strong {
 
 
 #economic-growth-and-gdp {
-    background-color: #66ccff;
+    background-color: var(--color-accent);
 }
 
 /*----------------------------------------------*/
@@ -235,7 +247,7 @@ strong {
 
 
 #overview-of-sectors-and-markets {
-    background-color: #ff66b3;
+    background-color: var(--color-primary);
     background-image: url("../img/markets.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -247,7 +259,7 @@ strong {
 
 
 #real-estate-sectors-and-vectom {
-    background-color: #b3ff66;
+    background-color: var(--color-secondary);
 }
 
 /*----------------------------------------------*/
@@ -256,7 +268,7 @@ strong {
 
 
 #population-growth {
-    background-color: #ff9966;
+    background-color: var(--color-accent);
     background-image: url("../img/population.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -268,7 +280,7 @@ strong {
 
 
 #regional-variations {
-    background-color: #66ff99;
+    background-color: var(--color-primary);
 }
 
 /*----------------------------------------------*/
@@ -277,7 +289,7 @@ strong {
 
 
 #performance-trends {
-    background-color: #9966ff;
+    background-color: var(--color-secondary);
     background-image: url("../img/performance.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -289,7 +301,7 @@ strong {
 
 
 #capital-value {
-    background-color: #ff66cc;
+    background-color: var(--color-accent);
 }
 
 /*----------------------------------------------*/
@@ -298,7 +310,7 @@ strong {
 
 
 #market-leaders {
-    background-color: #ccff66;
+    background-color: var(--color-primary);
     background-image: url("../img/canada_city_famous_toronto_icon.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -310,7 +322,7 @@ strong {
 
 
 #capital-growth {
-    background-color: #66cc66;
+    background-color: var(--color-secondary);
 }
 
 /*----------------------------------------------*/
@@ -319,7 +331,7 @@ strong {
 
 
 #e-commerce-boom {
-    background-color: #ff9966;
+    background-color: var(--color-accent);
     background-image: url("../img/online-store.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -331,7 +343,7 @@ strong {
 
 
 #industrial-national-report {
-    background-color: #cc66ff;
+    background-color: var(--color-primary);
     background-image: url("../img/data-center.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -343,7 +355,7 @@ strong {
 
 
 #industrial-graph {
-    background-color: #66ffcc;
+    background-color: var(--color-secondary);
 }
 
 /*----------------------------------------------*/
@@ -352,7 +364,7 @@ strong {
 
 
 #technological-advancements {
-    background-color: #ff6666;
+    background-color: var(--color-accent);
     background-image: url("../img/artificial-intelligence.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -364,7 +376,7 @@ strong {
 
 
 #industrial-low-availability {
-    background-color: #ccff99;
+    background-color: var(--color-primary);
     background-image: url("../img/manufacturing.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -376,7 +388,7 @@ strong {
 
 
 #industrial-rent-growth {
-    background-color: #6699ff;
+    background-color: var(--color-secondary);
 }
 
 /* ------------------------------------*/
@@ -385,7 +397,7 @@ strong {
 
 
 #industrial-opportunity {
-    background-color: #ffcc99;
+    background-color: var(--color-accent);
     background-image: url("../img/productivity.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -397,7 +409,7 @@ strong {
 
 
 #recommendations {
-    background-color: #66ff66;
+    background-color: var(--color-primary);
     background-image: url("../img/efficacy.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
@@ -409,7 +421,7 @@ strong {
 
 
 #acknowledgments {
-    background-color: #ffccff;
+    background-color: var(--color-secondary);
     background-image: url("../img/email.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
