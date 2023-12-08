@@ -11,7 +11,7 @@
 
     --color-primary: rgba(124, 204, 229, 0.5);
     --color-secondary: rgba(181, 118, 173, 0.5);
-    --color-accent: rgba(224, 70, 68, 0.5);
+    --color-accent: rgba(253, 228, 127, 0.5);
 
 
     --background1: linear-gradient(var(--color1), #000000);
@@ -124,6 +124,7 @@ strong {
     width: 80%; /* Set a fixed width or percentage as per your design */
     margin: 0 auto; /* Center the container */
     padding: 20px; /* Add some padding */
+    border-radius: 1rem;
     box-sizing: border-box; /* Include padding in the width calculation */
 }
 
