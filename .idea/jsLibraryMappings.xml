@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{bootstrap, d3-array.v2, d3-geo.v2, d3-scale-chromatic.v1, d3.v7, font-awesome, jquery-3.6.0, leaflet, topojson.v3, widgets}" />
+  </component>
+</project>
