@@ -4,9 +4,9 @@
 :root {
     --color-profile: srgb;
     --color-mode: light;
-    --color-text: #ffffff;
-    --color-background: rgba(0, 0, 0, 0.8);
-    --text-background: rgba(0, 0, 0, 0.8);
+    --color-text: #000000;
+    --color-background: rgba(255, 255, 255, 0.84);
+    --text-background: rgba(255, 255, 255, 0.84);
     --myshadow: .1rem .1rem .1rem rgba(255, 255, 255, 0.76);
 
     --background1: linear-gradient(var(--color1), #000000);
@@ -140,7 +140,7 @@ strong {
     display: block;
     height: 10px; /* Dot size */
     width: 10px; /* Dot size */
-    background-color: var(--color-background);
+    background-color: var(--color-text);
     border-radius: 50%;
     margin-bottom: 10px; /* Space between dots */
     transition: background-color 0.3s;
@@ -149,7 +149,7 @@ strong {
 .dot-navigation .dot.active,
 .dot-navigation .dot:hover,
 .dot-navigation .dot:focus {
-    background-color: var(--color2);
+    background-color: var(--color-background);
 }
 
 .dot-navigation .dot.active {
