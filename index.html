@@ -18,12 +18,23 @@
 </head>
 <body>
 
+
 <!-- Scrollable Container for Sections -->
 <div class="scroll-container">
 
+
     <!-- The Rise of Industrial Real Estate Development -->
     <section class="section" id="the-rise-of-industrial-real-estate-development">
+        <!-- Dark Theme Toggle -->
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="slider round"></div>
+            </label>
+            <em>Change Theme</em>
+        </div>
         <div class="container-top">
+
             <div class="title-box">
                 <h1>The Rise of Industrial Real Estate Development</h1>
             </div>
@@ -87,7 +98,7 @@
             <div class="text-box">
                 <h3>Canada's commercial real estate is categorized into <strong>four</strong> distinct sectors, and its
                     growth is primarily
-                    driven by <strong>six</strong> key markets: known as the <strong>VECTOM</strong> regions.</h3>
+                    driven by <strong>six</strong> key markets known as the <strong>VECTOM</strong> regions.</h3>
             </div>
         </div>
 
@@ -158,7 +169,7 @@
             <h3><strong>How Is Population Growth Impacting Demand in Urban Commercial Real Estate?</strong></h3>
             <div class="black-background-container">
                 <div class="row justify-content-center">
-                    <h3 id="population-info">Click on a province to see its population.</strong></h3>
+                    <h3 id="population-info">Click on a province to see its population.</h3>
                     <div class="col-lg-10">
                         <div class="map-timeline-container" id="map">
                             <!-- Legend now inside the map container -->
@@ -199,7 +210,8 @@
         <div class="container-mid">
 
             <h2>Capital Value</h2>
-            <h3><strong>What Do Performance Trends Reveal About the Resilience of Different Real Estate Sectors?</strong></h3>
+            <h3><strong>What Do Performance Trends Reveal About the Resilience of Different Real Estate
+                Sectors?</strong></h3>
             <div class="black-background-container" style="width: 90%">
                 <!-- First Row -->
                 <div class="row">
@@ -461,7 +473,8 @@
         <div class="container-mid">
 
             <h2>Industrial Rent Growth</h2>
-            <h3><strong>How is the Rise of AI and E-commerce Reshaping Rent Growth in Industrial Real Estate?</strong></h3>
+            <h3><strong>How is the Rise of AI and E-commerce Reshaping Rent Growth in Industrial Real Estate?</strong>
+            </h3>
             <div class="black-background-container">
                 <!-- Map and Sector Visualizations Row -->
                 <div id="industrial-container">
@@ -553,6 +566,8 @@
                     with
                     valuable skills in HTML, CSS, JS, and D3, which we are eager to apply in our professional roles and
                     future learning endeavors.</p>
+                <img src="img/email.png" alt="Thank You" style="width: 200px; height: auto; align-content: center" class="inverted-image">
+                <!-- ... -->
                 <!-- Clearfix for column break -->
                 <div style="break-before:column;"></div>
                 <h3><strong>Datasets used:</strong></h3>
@@ -621,30 +636,6 @@
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    console.log("Script loaded");
-    window.addEventListener('DOMContentLoaded', () => {
-        // Add fade-in effect to all h1 elements
-        document.querySelectorAll('h1').forEach(h1 => {
-            h1.classList.add('fade-in-section');
-        });
-
-        // IntersectionObserver for fade-in effect
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                }
-            });
-        }, {threshold: 1});
-
-        // Observe elements for fade-in effect
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-            observer.observe(section);
-        });
-    });
-</script>
-
 
 <!-- Load JS libraries: jQuery, bootstrap, D3 -->
 <script crossorigin="anonymous"

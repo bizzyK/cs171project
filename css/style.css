@@ -1,9 +1,7 @@
 /*----------------------------------------------*/
-/* Site Settings
+/* Color Settings
 /*----------------------------------------------*/
 :root {
-    --color-profile: srgb;
-    --color-mode: light;
     --color-text: #000000;
     --color-background: rgba(255, 255, 255, 0.5);
     --text-background: rgba(255, 255, 255, 0.7);
@@ -29,6 +27,88 @@
     --color6: #F9A553;
 }
 
+/*----------------------------------------------*/
+/* Dark Theme
+/*----------------------------------------------*/
+[data-theme="dark"] {
+    --color-text: rgb(255, 255, 255);
+    --color-background: rgba(0, 0, 0, 0.7);
+    --text-background: rgba(0, 0, 0, 0.7);
+    /*--myshadow: .1rem .1rem .1rem rgba(255, 255, 255, 0.78);*/
+}
+
+[data-theme="dark"] .inverted-image {
+    filter: invert(100%);
+}
+
+
+/*Simple css to style it like a toggle switch*/
+.theme-switch-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+
+    em {
+        margin-left: 10px;
+        font-size: .7rem;
+        color: var(--color-text)
+    }
+}
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display:none;
+}
+
+.slider {
+    background-color: var(--color-background);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: var(--color-text);
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: var(--color-background);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/*----------------------------------------------*/
+/* Site Settings
+/*----------------------------------------------*/
 html {
     scroll-behavior: smooth;
 }
@@ -40,7 +120,7 @@ a {
 
 /* If you want to change the color on hover as well */
 a:hover {
-    color: var(--color-primary); /* Darker blue on hover, replace with your desired hover color */
+    color: var(--color3); /* Darker blue on hover, replace with your desired hover color */
 }
 
 /* Ensure that the container of the visualizations is a flex container */
@@ -73,27 +153,16 @@ a:hover {
     }
 }
 
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: opacity 2.5s ease-out, transform 2.5s ease-out;
-}
-
-.fade-in-section.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 body {
-    margin: 0;
     padding: 0;
     /*overflow: hidden;*/
     font-family: 'Raleway', sans-serif;
+    color: var(--color-text)
 }
 
 .section {
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     scroll-snap-align: start;
     flex-direction: column;
@@ -124,10 +193,17 @@ body {
     display: none;
 }
 
+.section .text-box h3,
+.section .black-background-container h3 {
+    font-size: 1.7em;
+    justify-content: center;
+    color: var(--color-text);
+}
+
 .section h3 {
     font-size: 1.7em;
     justify-content: center;
-
+    color: black;
 }
 
 .section h4 {
@@ -145,13 +221,6 @@ strong {
     font-weight: 700;
 }
 
-/*!* Add styles for the section that's currently active *!*/
-/*.section.active {*/
-/*    transform: scale(1.1);*/
-/*    background-color: #ffffff;*/
-/*}*/
-
-
 .scroll-container {
     overflow-y: auto;
     scroll-snap-type: y mandatory;
@@ -159,10 +228,10 @@ strong {
 }
 
 .section .container-fluid {
-    /*height: 100%;*/
-    /*width: 100%;*/
-    box-sizing: content-box;
-    width: 90%;
+    height: 100%;
+    width: 100%;
+    /*box-sizing: content-box;*/
+    /*width: 90%;*/
 }
 
 .img-fluid {
@@ -190,12 +259,11 @@ strong {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-
 }
 
 .black-background-container {
     background-color: var(--color-background); /* Black background */
-    color: #000000; /* White text color for contrast */
+    color: var(--color-text); /* White text color for contrast */
     height: 100%;
     width: 90%; /* Set a fixed width or percentage as per your design */
     margin: 0 auto; /* Center the container */
@@ -291,14 +359,6 @@ strong {
     background-color: var(--color4); /* Color change for active dot */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and size */
 }
-
-/*----------------------------------------------*/
-/* Dark Theme
-/*----------------------------------------------*/
-
-/*----------------------------------------------*/
-/* Light Theme
-/*----------------------------------------------*/
 
 /*----------------------------------------------*/
 /* Legend
@@ -547,7 +607,7 @@ strong {
 }
 
 .sector-icon {
-    fill: black;
+    fill: var(--color-text);
     margin: 10px;
     width: 150px;
     height: 150px;
@@ -1144,10 +1204,8 @@ td {
 
 #acknowledgments {
     background-color: var(--color-secondary);
-    background-image: url("../img/email.png");
-    background-size: 200px 200px;
-    background-position: bottom 50px left 25%;
 }
+
 
 .acknowledgments-container {
     flex: 0 0 auto; /* Prevents flex layout for this element */

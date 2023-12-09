@@ -93,17 +93,8 @@ function initMainPage(dataArray) {
     let industrial = dataArray[4];
     let vacancyData = dataArray[5];
     let rentGrowthData = dataArray[6];
-    //let populationData = dataArray[7];
 
     let colors = getColorDefinitions();
-
-
-    // DEBUGGING data
-    //console.log(colors)
-    // console.log("macro_data: ", macro_data)
-    // console.log("consumer_data: ", consumer_data)
-    // console.log("housing_data: ", housing_data)
-    // console.log('check out ALL the data', dataArray);
 
     let macroEventHandler = {
         bind: (eventName, handler) => {
@@ -140,8 +131,24 @@ function initMainPage(dataArray) {
         VectomMap.resetToCurrentPopulation(); //
     });
 
-    // Scroll event listener to update dot navigation
-    window.addEventListener('scroll', updateDotNavigation);
+    // navigation dots
+    document.addEventListener('scroll', function () {
+        const sections = document.querySelectorAll('.section');
+        const dots = document.querySelectorAll('.dot-navigation .dot');
+
+        sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const pageScroll = document.documentElement.scrollTop;
+
+            // Check if the section is currently active (in viewport)
+            if (pageScroll >= sectionTop && pageScroll < sectionTop + sectionHeight) {
+                dots[index].classList.add('active');
+            } else {
+                dots[index].classList.remove('active');
+            }
+        });
+    });
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -152,6 +159,30 @@ function initMainPage(dataArray) {
             });
         });
     });
+
+    //site theme change
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {        document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
 }
 
 // Function to update the dot navigation based on current scroll position
