@@ -75,7 +75,7 @@ class CanadaMap {
             .attr("fill", d => d[1].color)
             .on("mouseover", function(event, d) {
                 d3.select(this)
-                    .attr("stroke", "var(--color-text)")
+                    .attr("stroke", "white")
                     .attr("stroke-width", 3);
             })
             .on("mouseout", function(event, d) {
@@ -93,7 +93,7 @@ class CanadaMap {
                 // Update the selected region element
                 vis.selectedRegionElement = d3.select(this);
                 vis.selectedRegionElement
-                    .attr("stroke", "var(--color-text)")  // or a specific color if you prefer
+                    .attr("stroke", "white")  // or a specific color if you prefer
                     .attr("stroke-width", 3);
 
                 // Update content based on the selected region
@@ -107,29 +107,29 @@ class CanadaMap {
     updateCardContentRegion(region) {
         let vis = this;
         vis.regionInfo = {
-            'Vancouver': "Known for its vibrant real estate market, Vancouver is a hub for residential and commercial properties, characterized by high property values and a diverse market. Key features include a strong housing market, diverse demographics, and thriving commercial districts. Vancouver is also a major port city contributing significantly to Canada's economy.",
-            'Edmonton': "Edmonton's real estate market is influenced by its status as a governmental and cultural center, offering a stable environment for both commercial and residential sectors. Key features include governmental buildings, cultural institutions, and an affordable housing market. Edmonton has strong public sector influence, with growing service and technology sectors.",
-            'Calgary': "Calgary's real estate market is dynamic, influenced by the energy sector. It features a mix of modern commercial properties and residential areas. Key features include proximity to natural resources, modern downtown area, and suburban expansion. Calgary is known for its robust energy sector, complemented by growing financial and technology industries, positioning it as a key player in both traditional and emerging economic sectors.",
-            'Toronto': "As Canada's financial capital, Toronto's real estate market is robust, with a high demand for both commercial and residential spaces. Key Features include a diverse economy, high-density urban center, and a luxury housing market. Toronto, as a financial services hub with a diverse cultural scene, stands out as a major international city, significantly contributing to the global economy with its robust financial sector, rich cultural diversity, and international stature.",
-            'Ottawa': "Being the capital city, Ottawa has a stable real estate market with a significant presence of governmental and diplomatic properties. Key features include governmental offices, historical sites, mixed urban and suburban areas. Its economic significance lies in public sector employment, a burgeoning tech industry, and a vibrant tourism sector, all contributing to a mixed urban and suburban landscape enriched with governmental offices and historical sites.",
-            'Montreal': "Montreal's real estate market uniquely fuses historical architecture with contemporary development, reflecting its rich cultural and artistic vibrancy. This blend of old and new is accentuated by its deep French heritage and a lively arts scene. Economically, Montreal stands out as a cultural hub, bolstered by robust industrial and service sectors, and its status as a significant port city."
+            'Vancouver': "Known for its vibrant real estate market, <strong>Vancouver</strong> is a hub for residential and commercial properties, characterized by high property values and a diverse market. Key features include a strong housing market, diverse demographics, and thriving commercial districts. <strong>Vancouver</strong> is also a major port city contributing significantly to Canada's economy.",
+            'Edmonton': "<strong>Edmonton's</strong> real estate market is influenced by its status as a governmental and cultural center, offering a stable environment for both commercial and residential sectors. Key features include governmental buildings, cultural institutions, and an affordable housing market. <strong>Edmonton</strong> has strong public sector influence, with growing service and technology sectors.",
+            'Calgary': "<strong>Calgary's</strong> real estate market is dynamic, influenced by the energy sector. It features a mix of modern commercial properties and residential areas. Key features include proximity to natural resources, modern downtown area, and suburban expansion. <strong>Calgary</strong> is known for its robust energy sector, complemented by growing financial and technology industries, positioning it as a key player in both traditional and emerging economic sectors.",
+            'Toronto': "As Canada's financial capital, <strong>Toronto's</strong> real estate market is robust, with a high demand for both commercial and residential spaces. Key Features include a diverse economy, high-density urban center, and a luxury housing market. <strong>Toronto</strong>, as a financial services hub with a diverse cultural scene, stands out as a major international city, significantly contributing to the global economy with its robust financial sector, rich cultural diversity, and international stature.",
+            'Ottawa': "Being the capital city, <strong>Ottawa</strong> has a stable real estate market with a significant presence of governmental and diplomatic properties. Key features include governmental offices, historical sites, mixed urban and suburban areas. Its economic significance lies in public sector employment, a burgeoning tech industry, and a vibrant tourism sector, all contributing to a mixed urban and suburban landscape enriched with governmental offices and historical sites.",
+            'Montreal': "<strong>Montreal's</strong> real estate market uniquely fuses historical architecture with contemporary development, reflecting its rich cultural and artistic vibrancy. This blend of old and new is accentuated by its deep French heritage and a lively arts scene. Economically, <strong>Montreal</strong> stands out as a cultural hub, bolstered by robust industrial and service sectors, and its status as a significant port city."
         };
         d3.select("#content .card-body").html(vis.regionInfo[region]);
     }
     updateCardContent(sector) {
         let vis = this;
         vis.sectorInfo = {
-            'retail': "The retail sector, encompassing shopping centers, malls, and high-street shops, faces evolving trends like the shift towards e-commerce, the criticality of location, and the rise of mixed-use developments. Key challenges include adapting to online shopping trends, sustaining foot traffic, and managing market competition.",
-            'office': "Encompassing skyscrapers and small business offices, the office sector is seeing a rise in demand for flexible workspaces and green buildings, with amenities gaining importance. Key challenges include adapting to remote work, managing vacancy rates, and upgrading older buildings.",
-            'industrial': "This sector, covering manufacturing, logistics, warehouses, and distribution centers, is experiencing an e-commerce driven demand surge for warehouses and smart factories. Challenges include maintaining location accessibility, technological advancements, and adhering to environmental regulations.",
-            'multifamily': "The multifamily sector, including rental apartments and condominiums, is witnessing urbanization-driven demand and the development of luxury units with community amenities. Major challenges are providing affordable housing, effective property management, and navigating market fluctuations."
+            'retail': "The <strong>retail</strong> sector, encompassing shopping centers, malls, and high-street shops, faces evolving trends like the shift towards e-commerce, the criticality of location, and the rise of mixed-use developments. Key challenges include adapting to online shopping trends, sustaining foot traffic, and managing market competition.",
+            'office': "Encompassing skyscrapers and small business offices, the <strong>office</strong> sector is seeing a rise in demand for flexible workspaces and green buildings, with amenities gaining importance. Key challenges include adapting to remote work, managing vacancy rates, and upgrading older buildings.",
+            'industrial': "The <strong>industrial</strong> sector, covering manufacturing, logistics, warehouses, and distribution centers, is experiencing an e-commerce driven demand surge for warehouses and smart factories. Challenges include maintaining location accessibility, technological advancements, and adhering to environmental regulations.",
+            'multifamily': "The <strong>multifamily</strong> sector, including rental apartments and condominiums, is witnessing urbanization-driven demand and the development of luxury units with community amenities. Major challenges are providing affordable housing, effective property management, and navigating market fluctuations."
         };
         d3.select("#content .card-body").html(vis.sectorInfo[sector]);
     }
 
     updateHeaderText(text, color) {
         let vis = this;
-        const header = document.querySelector('#sectors h1');
+        const header = document.querySelector('#real-estate-sectors-and-vectom h1');
         header.textContent = text;
         header.style.color = color; // Set the header color
     }

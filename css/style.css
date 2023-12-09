@@ -5,7 +5,7 @@
     --color-profile: srgb;
     --color-mode: light;
     --color-text: #000000;
-    --color-background: rgba(0, 0, 0, 0.84);
+    --color-background: rgb(255, 255, 255);
     --text-background: rgba(255, 255, 255, 0.84);
     --myshadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.78);
 
@@ -33,6 +33,35 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Ensure that the container of the visualizations is a flex container */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap as needed */
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/* Adjust the size of the columns */
+@media (min-width: 992px) { /* Adjust based on your layout breakpoints */
+    .col-lg-8 {
+        flex: 0 0 66.66667%;
+        max-width: 66.66667%;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+}
+
+/* For smaller screens, each visualization can take full width */
+@media (max-width: 991px) {
+    .col-lg-8, .col-lg-4 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
 .fade-in-section {
     opacity: 0;
     transform: translateY(1rem);
@@ -53,7 +82,7 @@ body {
 
 .section {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     scroll-snap-align: start;
     flex-direction: column;
@@ -75,6 +104,7 @@ body {
     color: white;
     text-shadow: var(--myshadow);
     margin-outside: 20%;
+    top: 100px;
 }
 
 .section h2 {
@@ -85,7 +115,8 @@ body {
 
 .section h3 {
     font-size: 1.7em;
-    margin-bottom: 20px;
+    justify-content: center;
+
 }
 
 .section h4 {
@@ -109,26 +140,104 @@ strong {
 /*    background-color: #ffffff;*/
 /*}*/
 
-.container-mid {
-    top: 50%;
+
+
+.scroll-container {
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+}
+
+.section .container-fluid {
+    /*height: 100%;*/
+    /*width: 100%;*/
     box-sizing: content-box;
     width: 90%;
-    /*margin-right: auto;*/
-    /*margin-left: auto;*/
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-box {
+    background-color: var(--text-background);
+    border-radius: 1rem;
+    resize: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 80%;
+
+}
+
+.title-box {
+    resize: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
 }
 
 .black-background-container {
-    background-color: var(--color-background); /* Black background */
-    color: #fff; /* White text color for contrast */
-    height: 500px;
-    width: 80%; /* Set a fixed width or percentage as per your design */
+    /*background-color: var(--color-background); !* Black background *!*/
+    color: #000000; /* White text color for contrast */
+    height: 100%;
+    width: 100%; /* Set a fixed width or percentage as per your design */
     margin: 0 auto; /* Center the container */
-    padding: 20px; /* Add some padding */
+    padding: 10px; /* Add some padding */
     border-radius: 1rem;
     box-sizing: border-box; /* Include padding in the width calculation */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+.custom-container-box {
+    padding: 0;
+    /*border-radius: 1rem;*/
+    background-color: var(--color-background);
+    height: 100%;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
+}
+
+.black-background-container svg {
+    justify-content: center;
+    align-items: center;
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+.container-top {
+    position: relative;
+    top: 0;
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-mid {
+    box-sizing: content-box;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+}
 .container-bottom {
     z-index: 100;
     font-size: 0.65em;
@@ -138,15 +247,6 @@ strong {
     /*margin-right: auto;*/
     /*margin-left: auto;*/
 }
-
-/*----------------------------------------------*/
-/* Dark Theme
-/*----------------------------------------------*/
-
-/*----------------------------------------------*/
-/* Light Theme
-/*----------------------------------------------*/
-
 /*----------------------------------------------*/
 /* Dot Navigation
 /*----------------------------------------------*/
@@ -180,33 +280,21 @@ strong {
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and size */
 }
 
-.scroll-container {
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    height: 100vh;
-}
+/*----------------------------------------------*/
+/* Dark Theme
+/*----------------------------------------------*/
 
-.section .container-fluid {
-    /*height: 100%;*/
-    /*width: 100%;*/
-    box-sizing: content-box;
-    width: 90%;
-}
-
-.source {
-    font-size: 12px;
-    margin-top: 3vh;
-    margin-bottom: 2vh;
-}
-
-/*.img-fluid {*/
-/*    max-width: 100%;*/
-/*    height: auto;*/
-/*}*/
+/*----------------------------------------------*/
+/* Light Theme
+/*----------------------------------------------*/
 
 /*----------------------------------------------*/
 /* Legend
 /*----------------------------------------------*/
+
+.legend {
+    font-size: 12px;
+}
 
 /*----------------------------------------------*/
 /* Tool Tip
@@ -217,7 +305,7 @@ strong {
 /*----------------------------------------------*/
 
 #the-rise-of-industrial-real-estate-development {
-    background-image: url(../img/cityscape.png);
+    background-image: url(../img/12.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -228,7 +316,7 @@ strong {
 
 #market-overview {
     background-color: var(--color-primary);
-    background-image: url("../img/canada_leaf_location_map_icon.png");
+    background-image: url("../img/property.png");
     background-size: 200px 200px;
     background-position: top 50px right 50%;
 }
@@ -252,6 +340,78 @@ strong {
 
 #economic-growth-and-gdp {
     background-color: var(--color-accent);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.vis-container1 {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 200px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    /*background-color: var(--color-background);*/
+    border-radius: 1rem;
+    margin-bottom: 15px;
+}
+.vis-container1 svg {
+    width: auto;
+    height: 100%;
+    fill: var(--color6);
+}
+
+#macro_vis2 {
+    height: 200px; /* Fixed height */
+    width: 100%; /* Takes 90% of the parent width */
+    margin: 0 auto; /* Center within the parent */
+}
+
+#consumer_vis {
+    height: auto;
+    width: 60vw;
+    margin: 15px;
+}
+#mortgage_vis .vis-container1,
+#consumer_vis .vis-container1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60vw;
+    border-radius: 1rem;
+    margin-bottom: 15px;
+}
+#mortgage_vis .vis-container1 svg ,
+#consumer_vis .vis-container1 svg {
+    width: 100%;
+    height: auto;
+    fill: var(--color6);
+}
+/*#mortgage_vis,*/
+/*#unemployment_vis {*/
+/*    height: 20vh;*/
+/*    fill: var(--color6);*/
+/*    width: 20vw;*/
+/*    margin: 15px;*/
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Adjust based on your layout breakpoints */
+    .col-lg-4, .col-lg-8 {
+        flex-basis: 100%; /* Forces columns to take full width on smaller screens */
+        max-width: 100%; /* Ensures columns do not exceed the width of the container */
+    }
+}
+
+.highlighted-label {
+    fill: white;
+    font-size: 11px;
+    text-anchor: middle;
+}
+
+.graph-title {
+    fill: white;
+    font-size: 11px;
+    font-weight: bold;
 }
 
 /*----------------------------------------------*/
@@ -273,6 +433,158 @@ strong {
 
 #real-estate-sectors-and-vectom {
     background-color: var(--color-secondary);
+}
+/*.canada-icon {*/
+/*    top: 10%;*/
+/*    margin: 30px;*/
+/*    position: absolute;*/
+/*    transition: fill 0.5s;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+.canada-icon-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* ... other styles ... */
+}
+
+#canada {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    bottom: 210px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    /*background-color: var(--color-background);*/
+    display: flex;
+    padding: 15px;
+}
+
+.content-card {
+    position: relative;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 1rem;
+    transition: fill 0.3s;
+    height: auto;
+
+    /*justify-content: center;*/
+    /*height: auto;*/
+    /*position: absolute;*/
+    /*transition: fill 0.3s;*/
+}
+
+.card-body {
+    /*color: var(--color-text);*/
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 0;
+}
+
+#chart-container {
+    margin: 20% 0 0 0;
+    height: 70vh;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#brushDiv svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+#timeline1 line,
+#timeline1 path {
+    stroke: var(--color-text); /* Sets the SVG line color */
+}
+
+#sectors-container,
+#industrial-container {
+    position: relative;
+    max-height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#industrial1 .sector-icon {
+    fill: var(--color2);
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    transition: fill 0.5s;
+}
+
+.sector-icon {
+    fill: white;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    transition: fill 0.5s;
+}
+
+#retail {
+    top: 10px;
+    left: 10px;
+}
+
+#office {
+    top: 10px;
+    right: 10px;
+}
+
+#industrial {
+    bottom: 10px;
+    left: 10px;
+}
+
+#multifamily {
+    bottom: 10px;
+    right: 10px;
+}
+
+#retail:hover, .retail-clicked {
+    fill: var(--color3);
+}
+
+#office:hover, .office-clicked {
+    fill: var(--color4);
+}
+
+#industrial:hover, .industrial-clicked {
+    fill: var(--color1);
+}
+
+#multifamily:hover, .multifamily-clicked {
+    fill: var(--color2);
+}
+
+.region-clicked {
+    stroke: white;
+    stroke-width: 3;
 }
 
 /*----------------------------------------------*/
@@ -296,6 +608,61 @@ strong {
     background-color: var(--color-primary);
 }
 
+#map {
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+    border-radius: 1rem 1rem 0 0;
+}
+
+#timeline1 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 1rem 1rem;
+    /*background-color: var(--color-background);*/
+    margin: 0;
+}
+
+/* Ensure map and timeline containers are the same width */
+.map-timeline-container {
+    width: 100%;
+    margin: 0 auto; /* This will center the containers if they are block-level */
+}
+
+h6 {
+    margin: 0;
+    padding: .5rem;
+    font-size: 1rem;
+    background: var(--color-background);
+    color: var(--color-text);
+    pointer-events: auto;
+    border-radius: 1rem;
+}
+
+#population-legend .list-inline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#population-legend .list-inline li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.leaflet-tooltip-custom {
+    margin: 0;
+    padding: .5rem;
+    font-size: 1rem;
+    background: var(--color-background);
+    color: var(--color-text);
+    pointer-events: auto;
+    border-radius: 1rem;
+}
 /*----------------------------------------------*/
 /* Performance Trends
 /*----------------------------------------------*/
@@ -317,6 +684,232 @@ strong {
     background-color: var(--color-accent);
 }
 
+.source {
+    font-size: 12px;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+/*.!*Bubble & Bar-lollipop Tooltip*!*/
+#performance2 .tooltip,
+#performance3 .tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    font: .76rem Arial;
+    background: var(--color-text);
+    border: 0;
+    border-radius: 1rem;
+    pointer-events: none;
+    opacity: 0;
+}
+
+h4 {
+    color: var(--color-text);
+    font: 14px "arial";
+    font-weight: bold;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+h5 {
+    font: 10px "arial";
+    font-weight: bold;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.tooltip h4, .tooltip h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.legend rect {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    opacity: 0.7;
+}
+
+
+.circle-label {
+    opacity: 1;
+}
+
+
+#chart-area text {
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#bubble-area text {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#table-box {
+    opacity: 0.9;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+th {
+    color: var(--color-text);
+    font-size: 14px;
+    text-align: end;
+    white-space: normal;
+    word-break: break-word;
+    padding: 0.7vh;
+}
+
+td {
+    text-align: end;
+    font-size: 15px;
+}
+
+.table-highlight th {
+    font-size: larger;
+    font-weight: bold;
+    background-color: var(--color1);
+    color: var(--color-text);
+}
+
+.table.table-highlight tr {
+    border: black; /* Removes all borders from rows and cells */
+}
+
+#table-container {
+    position: relative; /* Container for the table and the commentary box */
+}
+
+#commentary-box1, #commentary-box2, #commentary-box3, #commentary-box4 {
+    display: none; /* Initially hidden */
+    background-color: var(--color5);
+    border-radius: 20px; /* Rounded corners for bubble effect */
+    padding: 15px; /* Padding inside the bubble */
+    margin-top: 2vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+    width: auto; /* Auto width based on content */
+    max-width: 100%; /* Maximum width */
+    text-align: center; /* Center align text */
+    font-size: 14px; /* Font size */
+    color: #333; /* Text color */
+    /* Position the box */
+    position: absolute;
+    /*right: 20%;*/
+    left: 20%;
+    transform: translateX(0%);
+}
+
+/* Arrow at the top of the bubble */
+#commentary-box1:after, #commentary-box2:after, #commentary-box3:after, #commentary-box4:after {
+    content: "";
+    position: absolute;
+    bottom: 100%; /* At the bottom of the bubble */
+    left: 85%; /* Centered horizontally */
+    margin-left: -10px; /* Half the width of the arrow */
+    border-width: 15px; /* Size of the arrow */
+    border-style: solid;
+    border-color: transparent transparent var(--color5) transparent; /* Arrow color */
+}
+
+/* Optional: Add custom styling for the text */
+#commentary-box1 p, #commentary-box2 p, #commentary-box3 p, #commentary-box4 p {
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    line-height: 1.5; /* Improves line spacing */
+}
+
+#commentary-box, #commentary-bar {
+    border-radius: 20px;
+    padding: 15px 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow for a 3D effect */
+    width: auto;
+    max-width: 85%;
+    text-align: center;
+    font-size: 14px;
+    color: var(--color3);
+    margin: 10px auto;
+    transition: all 0.1s ease-in-out;
+}
+
+#commentary-box:hover, #commentary-bar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Arrow at the top of the bubble */
+#commentary-box:after, #commentary-bar:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -10px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent var(--color2) transparent; /* Arrow color matching box */
+}
+
+/* Styling for the text */
+#commentary-box p, #commentary-bar p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+/*Buttons and Others*/
+
+/*Play, Forward, Back buttons*/
+.btn, .btn1, .btn2, .btn3 {
+    padding: 5px 2px;
+    margin-bottom: 2vh;
+    color: var(--color-text);
+    font-size: 14px;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-text {
+    margin: .5vh;
+}
+
+#sortSelection, #dataSelection, #metricSelect, #lollipop-heading  {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+#sortSelection:hover, #dataSelection:hover, #metricSelect:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.source {
+    font-size: 12px;
+    color: var(--color2);
+}
+
+/*Buttons*/
+.mt-2 {
+    color: var(--color2);
+    margin: 1vh;
+    font-size: 11px;
+}
 /*----------------------------------------------*/
 /* Market Leaders
 /*----------------------------------------------*/
@@ -371,6 +964,68 @@ strong {
     background-color: var(--color-secondary);
 }
 
+#industrial-graph .y0.axis path,
+#industrial-graph .y0.axis line {
+    stroke: #98abc5;
+}
+
+#industrial-graph .y1.axis path,
+#industrial-graph .y1.axis line {
+    stroke: #d0743c;
+}
+
+#industrial-graph .x.axis path,
+#industrial-graph .x.axis line {
+    stroke: #d0743c;
+}
+
+#industrial-graph .x.axis text {
+    fill: black;
+}
+
+#industrial-graph .triangle-button {
+    /* Your existing styles */
+    background-color: transparent;
+    border-style: solid;
+    border-width: 20px 30px 20px 0;
+    border-color: transparent var(--color4) transparent transparent;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    position: absolute;
+    display: none;
+}
+
+#industrial-graph #scroll-left {
+    border-width: 20px 0 20px 30px;
+    border-color: transparent transparent transparent var(--color4);
+    top: 35vh;
+    right: 25vw;
+}
+
+#industrial-graph #scroll-right {
+    top: 35vh;
+    left: 25vw;
+}
+
+.vis-container4 {
+    height: 100%;
+    width: 70vw;
+    /*background-color: var(--color-background);*/
+    /*margin: 20px 20px;*/
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.vis-container4 svg {
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+
 /*----------------------------------------------*/
 /* Technological Advancements
 /*----------------------------------------------*/
@@ -402,6 +1057,46 @@ strong {
 
 #industrial-rent-growth {
     background-color: var(--color-secondary);
+}
+
+#industrial1 .sector-icon {
+    fill: var(--color2);
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    transition: fill 0.5s;
+}
+
+#vacancy {
+    top: 75px;
+    left: 10px;
+}
+
+#rentGrowth {
+    top: 75px;
+    right: 10px;
+}
+
+#vacancy:hover, .vacancy-clicked {
+    fill: var(--color3);
+}
+
+#rentGrowth:hover, .rentGrowth-clicked {
+    fill: var(--color4);
+}
+
+
+.vis-container2 {
+    height: 100%; /* adjust based on your needs */
+    width: 100%;
+    /*background-color: var(--color-background);*/
+    margin: 40px 40px;
+    border-radius: 1rem;
+}
+.vis-container2 svg {
+    width: 70%;
+    height: auto;
 }
 
 /* ------------------------------------*/
@@ -441,13 +1136,16 @@ strong {
 }
 
 .acknowledgments-container {
+    flex: 0 0 auto; /* Prevents flex layout for this element */
+    /*width: 100%; !* Full width *!*/
     column-count: 2;
-    column-gap: 40px; /* Adjust the gap as necessary */
+    column-gap: 3px; /* Adjust the gap as necessary */
     -webkit-column-count: 2; /* For Safari and Chrome */
     -webkit-column-gap: 40px; /* For Safari and Chrome */
     -moz-column-count: 2; /* For Firefox */
     -moz-column-gap: 40px; /* For Firefox */
 }
+
 
 /* Additional styles to ensure text split does not break the flow */
 .acknowledgments-container p,
@@ -456,3 +1154,8 @@ strong {
     page-break-inside: avoid;
     break-inside: avoid-column;
 }
+
+.acknowledgments-container p {
+    word-wrap: break-word;
+}
+

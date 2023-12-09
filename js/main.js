@@ -4,7 +4,7 @@
 
 
 // Combined Global Variables
-let myMap, VectomMap, mySectorVis,myStackedChart;
+let myMap, VectomMap, myNationalVis, myStackedChart;
 let macroChart, consumerChart, unemploymentChart, mortgageChart;
 
 // Function to convert date objects to strings or reverse
@@ -116,7 +116,7 @@ function initMainPage(dataArray) {
         }
     }
 
-    macroChart = new LineChart("macro_vis", macro_data, macroEventHandler)
+    //macroChart = new LineChart("macro_vis", macro_data, macroEventHandler)
     macroChart = new LineChart("macro_vis2", macro_data, macroEventHandler)
     consumerChart = new cBarChart("consumer_vis", consumer_data, colors, macroEventHandler)
     unemploymentChart = new AreaChart("unemployment_vis", macro_data, "unemployment", colors)
@@ -135,30 +135,13 @@ function initMainPage(dataArray) {
     VectomMap = new VectomMapVis('map', populationDataPath, geoDataPath, colors);
     VectomMap.addColorScaleKey();
     myStackedChart = new stackedChart("stacked-chart", vacancyData, rentGrowthData, colors, industrial);
-
+    myNationalVis = new dualChart("national-vis", industrial, colors);
     document.getElementById('resetButton').addEventListener('click', () => {
         VectomMap.resetToCurrentPopulation(); //
     });
 
-
-    // navigation dots
-    document.addEventListener('scroll', function () {
-        const sections = document.querySelectorAll('.scroll-section');
-        const dots = document.querySelectorAll('.dot-navigation .dot');
-
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const pageScroll = document.documentElement.scrollTop;
-
-            // Check if the section is currently active (in viewport)
-            if (pageScroll >= sectionTop && pageScroll < sectionTop + sectionHeight) {
-                dots[index].classList.add('active');
-            } else {
-                dots[index].classList.remove('active');
-            }
-        });
-    });
+    // Scroll event listener to update dot navigation
+    window.addEventListener('scroll', updateDotNavigation);
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -168,6 +151,24 @@ function initMainPage(dataArray) {
                 behavior: 'smooth'
             });
         });
+    });
+}
+
+// Function to update the dot navigation based on current scroll position
+function updateDotNavigation() {
+    const sections = document.querySelectorAll('.section');
+    const dots = document.querySelectorAll('.dot-navigation .dot');
+
+    sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const scrollPosition = window.scrollY;
+
+        // Update active dot based on current active section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
     });
 }
 
@@ -299,3 +300,4 @@ function getColorDefinitions() {
         mColor: rootStyle.getPropertyValue('--color6').trim()
     };
 }
+

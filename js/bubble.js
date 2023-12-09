@@ -63,7 +63,7 @@ async function loadData(selectedDataset) {
     console.log("Loading dataset:", selectedDataset);
 
     // Sub-heading text based on the selected dataset
-    let headingText = selectedDataset === "data/market.csv" ? "Markets" : "Sectors";
+    let headingText = selectedDataset === "market.csv" ? "Markets" : "Sectors";
     d3.select("#dynamic-heading").text("4-Quarter Trailing Capital Value (Annualized, 2001 - 2023) for " + headingText)
 
     // Clear existing SVG elements
@@ -497,4 +497,4 @@ d3.select("#sortSelection").on("change", function () {
 });
 
 // Load the default dataset when the page first loads
-loadData("data/market.csv");
+loadData("market.csv");

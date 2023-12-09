@@ -1,5 +1,5 @@
 class stackedChart {
-    constructor(_parentElement, _vacancyData, _rentGrowthData, _colors, _industrial) {
+    constructor(_parentElement, _vacancyData, _rentGrowthData, _colors) {
         this.parentElement = _parentElement;
         this.vacancyData = _vacancyData;
         this.rentGrowthData = _rentGrowthData;
@@ -14,7 +14,7 @@ class stackedChart {
         this.rentGrowthColor = _colors.rentGrowthColor;
         this.vacancyColor = _colors.vacancyColor;
         this.combinedData = []; // Initialize combinedData
-        this.selectedRegion = "Toronto"; // Initialize selectedMarket
+        //this.selectedRegion = "Toronto"; // Initialize selectedMarket
         this.selectedSector = 'vacancy';
         this.keys = ["Vancouver", "Edmonton", "Calgary", "Toronto", "Ottawa", "Montreal"];
         this.colors = {
@@ -421,7 +421,7 @@ class stackedChart {
             'rentGrowth': "img/rentGrowth.svg"
         };
         // Select the h3 element
-        const header = document.querySelector('#industrial1 h3');
+        const header = document.querySelector('#industrial-rent-growth h3');
 
         Object.entries(sectors).forEach(([sector, iconPath]) => {
             fetch(iconPath)
@@ -449,13 +449,21 @@ class stackedChart {
                         vis.selectedSector = sector;
                         header.textContent = sector === 'rentGrowth' ? 'Rent Growth in Industrial Sector' :
                             `${sector.charAt(0).toUpperCase() + sector.slice(1)} in Industrial Sector`;
-                        if (vis.selectedSectorElement) {
-                            vis.selectedSectorElement.classList.remove('clicked');
+
+                        // Remove 'clicked' class from both elements
+                        document.getElementById('vacancy').classList.remove('vacancy-clicked');
+                        document.getElementById('rentGrowth').classList.remove('rentGrowth-clicked');
+
+                        // Add 'clicked' class to the clicked element
+                        if (sector === 'vacancy') {
+                            document.getElementById('vacancy').classList.add('vacancy-clicked');
+                        } else if (sector === 'rentGrowth') {
+                            document.getElementById('rentGrowth').classList.add('rentGrowth-clicked');
                         }
-                        vis.selectedSectorElement = this;
-                        vis.selectedSectorElement.classList.add('clicked');
+
                         vis.wrangleData();
                     });
+
                 });
         });
     }

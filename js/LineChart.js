@@ -62,9 +62,11 @@ class LineChart {
             .attr("x", -25)
             .attr("y", -30)
             .text("Year-over-year change ")
+            .style("fill",  "var(--color-text)")
             .append("tspan")
             .attr("dx", -100)
             .attr("dy", 15)
+            .style("fill",  "var(--color-text)")
             .text("in GDP(%)");
 
         const highlightedPeriods = [
@@ -96,13 +98,14 @@ class LineChart {
                 // Append the highlighted area
                 d3.select(this).append("path")
                     .attr("class", "highlighted-area")
-                    .attr("fill", "orange")
-                    .attr("opacity", 0.3)
+                    .attr("fill", "var(--color6)")
+                    .attr("opacity", 0.5)
                     .attr("d", vis.area(areaData));
 
                 // Append the label above the highlighted area
                 d3.select(this).append("text")
                     .attr("class", "highlighted-label")
+                    .style("fill",  "var(--color-text)")
                     // .attr("x", vis.x(areaData[0].date))
                     .attr("x", vis.x(areaData[Math.floor(areaData.length / 2)].date)) // Use the midpoint of the data
                     .attr("y", -10) // Adjust the position as needed

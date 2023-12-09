@@ -10,8 +10,6 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600&display=swap"
           rel="stylesheet">
     <title>The Rise of Industrial Real Estate Development</title>
@@ -25,41 +23,58 @@
 
     <!-- The Rise of Industrial Real Estate Development -->
     <section class="section" id="the-rise-of-industrial-real-estate-development">
-        <h1>The Rise of Industrial Real Estate Development</h1>
+        <div class="container-top">
+            <div class="title-box">
+            <h1>The Rise of Industrial Real Estate Development</h1>
+            </div>
+        </div>
     </section>
 
     <!-- Market Overview -->
     <section class="section" id="market-overview">
         <div class="container-mid">
             <h2>Market Overview</h2>
-            <h3>In 2023, Canada's Commercial Real Estate Market is valued at an impressive <strong>USD 71.65
-                billion</strong>. This sector plays a significant role in the national economy and is expected to
-                continue its growth, reaching <strong>USD 103.28 billion</strong> by 2028. </h3>
+            <div class="text-box">
+                <h3>In 2023, Canada's Commercial Real Estate Market is valued at an impressive <strong>USD 71.65
+                    billion</strong>. This sector plays a significant role in the national economy and is expected to
+                    continue its growth, reaching <strong>USD 103.28 billion</strong> by 2028. </h3>
+            </div>
         </div>
     </section>
 
     <!-- Driving Factors -->
     <section class="section" id="driving-factors">
         <div class="container-mid">
-
             <h2>Driving Factors</h2>
-            <h3>Key macroeconomic drivers, including economic <strong>growth rates</strong>, interest rates, inflation,
-                technological
-                advancements, and employment figures, play a <strong>pivotal role</strong> in shaping the real estate
-                landscape.</h3>
+            <div class="text-box">
+                <h3>Key macroeconomic drivers, including economic <strong>growth rates</strong>, interest rates,
+                    inflation,
+                    technological
+                    advancements, and employment figures, play a <strong>pivotal role</strong> in shaping the real
+                    estate
+                    landscape.</h3>
+            </div>
         </div>
-
     </section>
 
     <!-- Economic Growth and GDP -->
     <section class="section" id="economic-growth-and-gdp">
         <div class="container-mid">
-
             <h2>Economic Growth and GDP</h2>
             <h3></h3>
             <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
+                <div class="vis-container1" id="macro_vis2"></div>
+                <!-- Consumer Spending and Unemployment/Mortgage Rate Visualization Row -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="vis-container1" id="consumer_vis"></div>
+                    </div>
+                    <div class="col-lg-4" style="justify-content: space-between">
+                        <div class="vis-container1" id="unemployment_vis"></div>
+                        <div class="vis-container1" id="mortgage_vis"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -69,10 +84,11 @@
         <div class="container-mid">
 
             <h2>Overview of Sectors and Markets</h2>
-            <h3>Canada's commercial real estate is categorized into <strong>four</strong> distinct sectors, and its
-                growth is primarily
-                driven by <strong>six</strong> key markets: known as the <strong>VECTOM</strong> regions.</h3>
-            <!-- Content for this section -->
+            <div class="text-box">
+                <h3>Canada's commercial real estate is categorized into <strong>four</strong> distinct sectors, and its
+                    growth is primarily
+                    driven by <strong>six</strong> key markets: known as the <strong>VECTOM</strong> regions.</h3>
+            </div>
         </div>
 
     </section>
@@ -84,8 +100,36 @@
             <h2>Real Estate Sectors and Vectom</h2>
             <h3></h3>
             <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
+                <div id="sectors-container">
+
+                    <!-- Sector Icons -->
+                    <div class="sector-icon" id="retail" title="Retail Sector">
+                        <!-- SVG for Retail will be loaded here -->
+                    </div>
+                    <div class="sector-icon" id="office" title="Office Sector">
+                        <!-- SVG for Office will be loaded here -->
+                    </div>
+                    <div class="sector-icon" id="industrial" title="Industrial Sector">
+                        <!-- SVG for Industrial will be loaded here -->
+                    </div>
+                    <div class="sector-icon" id="multifamily" title="Multifamily Sector">
+                        <!-- SVG for Multi will be loaded here -->
+                    </div>
+
+                    <!-- Canada Map -->
+                    <div class="canada-icon-icon" id="canada">
+                        <!-- Map of Canada will be rendered here -->
+                    </div>
+                    <div class="content-card" id="content">
+                        <div class="card-body">
+                            <h3 align="center">VECTOM:</h3>
+                            <p>Vancouver, Edmonton, Calgary,
+                                Toronto, Ottawa, and Montreal</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
     </section>
@@ -95,10 +139,12 @@
         <div class="container-mid">
 
             <h2>Population Growth</h2>
-            <h3>Population growth, particularly in major urban centers, emerges as a <strong>critical driving
-                force</strong>, fueling
-                <strong>demand</strong>
-                for diverse commercial spaces…</h3><!-- Content for this section -->
+            <div class="text-box">
+                <h3>Population growth, particularly in major urban centers, emerges as a <strong>critical driving
+                    force</strong>, fueling
+                    <strong>demand</strong>
+                    for diverse commercial spaces.</h3>
+            </div>
         </div>
 
     </section>
@@ -110,8 +156,24 @@
             <h2>Regional Variations</h2>
             <h3></h3>
             <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
+                <div class="row justify-content-center">
+                    <h3 id="population-info">Click on a province to see its population.</h3>
+                    <div class="col-lg-10">
+                        <div class="map-timeline-container" id="map">
+                            <!-- Legend now inside the map container -->
+                            <div class="legend" id="population-legend">
+                                <!-- legend items -->
+                            </div>
+                        </div>
+                        <div class="map-timeline-container" id="timeline1"></div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div id="controls"><br>
+                        <button id="resetButton">Reset to Total Population</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -121,9 +183,12 @@
         <div class="container-mid">
 
             <h2>Performance Trends</h2>
-            <h3>Distinct patterns emerge when examining <strong>performance trends</strong> across various real estate
-                sectors, each
-                responding uniquely to evolving market dynamics...</h3><!-- Content for this section -->
+            <div class="text-box">
+                <h3>Distinct patterns emerge when examining <strong>performance trends</strong> across various real
+                    estate
+                    sectors, each
+                    responding uniquely to evolving market dynamics.</h3>
+            </div>
         </div>
 
     </section>
@@ -134,9 +199,75 @@
 
             <h2>Capital Value</h2>
             <h3></h3>
-            <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
+            <div class="black-background-container" style="width: 90%">
+                <!-- First Row -->
+                <div class="row">
+                    <!-- Selection Dropdown -->
+                    <div class="col-md-3 text-center">
+                        <div class="mt-2">Select & Play OR Pause, Select & Play</div>
+                        <select class="form-select btn btn-outline-info" id="dataSelection">
+                            <option value="market.csv">Markets</option>
+                            <option value="sector.csv">Sectors</option>
+                        </select>
+                    </div>
+
+                    <!-- Play/Pause Button -->
+                    <div class="col-md-2 text-center">
+                        <div class="mt-2">Play Animation</div>
+                        <button class="btn1 btn-outline-info" id="playPauseButton" type="button">Play</button>
+                    </div>
+
+                    <!-- Back Button -->
+                    <div class="col-md-1 text-center button-container">
+                        <div class="mt-2" id="backButtonText" style="display: none;">Back</div>
+                        <button class="btn2 btn-outline-info" id="backButton" type="button">Back</button>
+                    </div>
+
+                    <!-- Forward Button -->
+                    <div class="col-md-1 text-center button-container">
+                        <div class="mt-2" id="forwardButtonText" style="display: none;">Forward</div>
+                        <button class="btn3 btn-outline-info" id="forwardButton" type="button">Forward</button>
+                    </div>
+
+                    <!-- Empty column -->
+                    <div class="col-md-2 text-center"></div>
+
+                    <!-- Table Sort Dropdown -->
+                    <div class="col-md-3 text-center">
+                        <div class="mt-2">Sort Table by Metric during "Play" mode</div>
+                        <select class="form-select btn btn-outline-info" id="sortSelection">
+                            <option value="total">Total Return</option>
+                            <option value="income">Income Return</option>
+                            <option value="capitalvalue">Capital Value</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Second Row -->
+                <div class="row">
+                    <!-- Bubble Chart -->
+                    <div class="col-md-8" id="bubble-area"></div>
+                    <!-- Table -->
+                    <div class="col-md-4 text-end" id="table-container">
+                        <div class="mt-2" id="table-box"></div>
+                        <div id="commentary-box1" style="display: none;"></div>
+                        <div id="commentary-box2" style="display: none;"></div>
+                        <div id="commentary-box3" style="display: none;"></div>
+                        <div id="commentary-box4" style="display: none;"></div>
+                    </div>
+
+
+                    <!-- Text below scatterplot -->
+                    <a class="source"
+                       href="https://www.msci.com/research-and-insights?topic=real_estate" target="_blank">Source: <em>MSCI</em>
+                    </a>
+                    <a class="source"
+                       href="https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen?language=en"
+                       target="_blank"><em>Inspired by the Hans Rosling TED talk shown by Dr.
+                        Pfister</em>
+                    </a>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -146,12 +277,15 @@
         <div class="container-mid">
 
             <h2>Market Leaders</h2>
-            <h3>Canadian commercial real estate, notable for its consistent income returns, shows varied growth across
-                different sectors. In this varied landscape, <strong>Toronto</strong> and <strong>Vancouver</strong>
-                emerge as standout cities, drawing
-                considerable interest from investors and developers due to their <i><b>exceptional performance</i></b>.
-            </h3>
-            <!-- Content for this section -->
+            <div class="text-box">
+                <h3>Canadian commercial real estate, notable for its consistent income returns, shows varied growth
+                    across
+                    different sectors. In this varied landscape, <strong>Toronto</strong> and <strong>Vancouver</strong>
+                    emerge as standout cities, drawing
+                    considerable interest from investors and developers due to their <i><b>exceptional
+                        performance</b></i>.
+                </h3>
+            </div>
         </div>
 
     </section>
@@ -163,8 +297,60 @@
             <h2>Capital Growth</h2>
             <h3></h3>
             <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
+                <div class="row">
+                    <!-- Left Column for Bar Chart Heading -->
+                    <div class="col-md-8">
+                        <h3>Canadian real estate provides stable income</h3>
+                        <h4>Quarterly Return</h4>
+
+                        <!-- First (Column) Row -->
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-outline-info" id="lollipop-heading" type="button">
+                                    Brush to select timeseries
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Second (Column) Row -->
+                        <div class="row">
+                            <!-- Bar Chart -->
+                            <div class = "vis-container3" id="bar-area"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column for Lollipop Chart -->
+                    <div class="col-md-4">
+                        <h3>Capital Growth</h3>
+                        <h4>Annualized Return</h4>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-sm-6 btn">
+                                <select class="form-select btn btn-outline-info" id="metricSelect">
+                                    <option value="growth">Capital Growth</option>
+                                    <option value="income">Income Returns</option>
+                                    <option value="total">Total Returns</option>
+                                </select>
+                            </div>
+
+                            <!-- Lollipop Chart -->
+                            <div class = "vis-container3" id="lollipop-area"></div>
+                        </div>
+                    </div>
+
+                    <!-- Row: Commentary update -->
+                    <div class="row commentary-container btn btn-outline-info" id="commentary-bar">
+                        <p><strong>INDUSTRIAL remains resilient!!!</strong> <br><strong>Industrial</strong> has
+                            experienced very
+                            little drawdown in values and return has been quite strong over the last decade.
+                            Work-from-home and
+                            e-commerce have meant lower return for <strong>Office</strong> and <strong>Retail</strong>.
+                            High
+                            immigration in Canada, particularly in VECTOM, will keep <strong>Residential</strong>
+                            returns robust.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -174,13 +360,15 @@
         <div class="container-mid">
 
             <h2>E-commerce Boom</h2>
-            <h3>2022 saw a notable surge in Canada's e-commerce landscape, with user count reaching <strong>27
-                million</strong>,
-                representing
-                <strong>75%</strong> of the population... This surge fuels retail e-commerce sales, impacting industrial
-                real estate with
-                increased demand due to online shopping's popularity and social media's influence.</h3>
-            <!-- Content for this section -->
+            <div class="text-box">
+                <h3>2022 saw a notable surge in Canada's e-commerce landscape, with user count reaching <strong>27
+                    million</strong>,
+                    representing
+                    <strong>75%</strong> of the population. This surge fuels retail e-commerce sales, impacting
+                    industrial
+                    real estate with
+                    increased demand due to online shopping's popularity and social media's influence.</h3>
+            </div>
         </div>
 
     </section>
@@ -190,17 +378,21 @@
         <div class="container-mid">
 
             <h2>Industrial National Report</h2>
-            <h3>A recent report by the <a href="https://www.cbre.ca/" target="_blank">CBRE</a> indicates a rise in
-                industrial availability due to new supply entering the
-                market, alongside a stabilization of rent growth. The post-pandemic period saw an increase in net
-                absorption, although leasing activity was mostly concentrated in Toronto and Edmonton. This influx of
-                new
-                supply has slightly increased the national availability rate to <strong>2.1%</strong> in the second
-                quarter of 2023, yet
-                the
-                market remains tight with this rate still significantly lower than the <i><b>historical 15-year average</i></b>
-                of
-                <strong>4.8%</strong>.</h3><!-- Content for this section -->
+            <div class="text-box">
+                <h3>A recent report by the <a href="https://www.cbre.ca/" target="_blank">CBRE</a> indicates a rise in
+                    industrial availability due to new supply entering the
+                    market, alongside a stabilization of rent growth. The post-pandemic period saw an increase in net
+                    absorption, although leasing activity was mostly concentrated in Toronto and Edmonton. This influx
+                    of
+                    new
+                    supply has slightly increased the national availability rate to <strong>2.1%</strong> in the second
+                    quarter of 2023, yet
+                    the
+                    market remains tight with this rate still significantly lower than the <i><b>historical 15-year
+                        average</b></i>
+                    of
+                    <strong>4.8%</strong>.</h3>
+            </div>
         </div>
 
     </section>
@@ -208,14 +400,18 @@
     <!-- Industrial Graph -->
     <section class="section" id="industrial-graph">
         <div class="container-mid">
-
             <h2>Industrial Graph</h2>
-            <h3></h3>
-            <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
-        </div>
+            <div class="black-background-container" id="national-container">
 
+            <div class="vis-container4" id="national-vis">
+                    <!-- Ensure triangles are within this container -->
+                    <button id="scroll-left" class="triangle-button"></button>
+                    <button id="scroll-right" class="triangle-button"></button>
+                </div>
+            </div>
+        </div>
+        <!-- Tooltip container -->
+        <div class="tooltip"></div>
     </section>
 
     <!-- Technological Advancements -->
@@ -223,13 +419,16 @@
         <div class="container-mid">
 
             <h2>Technological Advancements</h2>
-            <h3>With innovative AI solutions like <strong>ChatGPT</strong>, the industrial real estate sector is poised
-                for
-                transformation.
-                AI's rapid expansion and the necessary infrastructure developments are driving <i><b>increased
-                    demand</i></b> for
-                industrial real estate worldwide. This presents a significant shift and opportunity within the
-                industry.</h3><!-- Content for this section -->
+            <div class="text-box">
+                <h3>With innovative AI solutions like <strong>ChatGPT</strong>, the industrial real estate sector is
+                    poised
+                    for
+                    transformation.
+                    AI's rapid expansion and the necessary infrastructure developments are driving <i><b>increased
+                        demand</b></i> for
+                    industrial real estate worldwide. This presents a significant shift and opportunity within the
+                    industry.</h3>
+            </div>
         </div>
 
     </section>
@@ -239,15 +438,17 @@
         <div class="container-mid">
 
             <h2>Industrial Low Availability</h2>
-            <h3>The growth of e-commerce and remote working technologies is shifting <i>demand</i> to warehouses and
-                data
-                centers,
-                leading to <strong>robust growth</strong> in the industrial real estate sector. This trend is
-                particularly evident in the
-                <strong>VECTOM</strong> regions, where decreasing industrial vacancy rates highlight a <strong>rising
-                    demand</strong> for spaces suited
-                for
-                tomorrow's digital infrastructure.</h3><!-- Content for this section -->
+            <div class="text-box">
+                <h3>The growth of e-commerce and remote working technologies is shifting <i>demand</i> to warehouses and
+                    data
+                    centers,
+                    leading to <strong>robust growth</strong> in the industrial real estate sector. This trend is
+                    particularly evident in the
+                    <strong>VECTOM</strong> regions, where decreasing industrial vacancy rates highlight a <strong>rising
+                        demand</strong> for spaces suited
+                    for
+                    tomorrow's digital infrastructure.</h3>
+            </div>
         </div>
 
     </section>
@@ -259,8 +460,22 @@
             <h2>Industrial Rent Growth</h2>
             <h3></h3>
             <div class="black-background-container">
-                <!-- Content goes here -->
-            </div><!-- Content for this section -->
+                <!-- Map and Sector Visualizations Row -->
+                <div id="industrial-container">
+                    <!-- Sector Icons -->
+                    <div class="sector-icon" id="vacancy">
+                        <!-- SVG for Retail will be loaded here -->
+                    </div>
+                    <div class="sector-icon" id="rentGrowth">
+                        <!-- SVG for Office will be loaded here -->
+                    </div>
+                    <div class="vis-container2" id="stacked-chart">
+                        <!-- Graphs will be rendered here -->
+                    </div>
+                </div>
+                <h3></h3>
+            </div>
+            <div class="tooltip"></div>
         </div>
 
     </section>
@@ -270,15 +485,19 @@
         <div class="container-mid">
 
             <h2>Industrial Opportunity</h2>
-            <h3>Industrial commercial real estate has become important for businesses and factories, providing <i><b>secure
-                storage space</i></b> and access to essential resources The industry is anticipated to experience a rise
-                in
-                demand
-                in the next few years, along with the great potential for economic growth. Industrial real estate demand
-                is
-                expected to increase by<strong> 850 million square feet</strong>, to <strong>14.8 billion</strong>
-                square feet, by 2023. </h3>
-            <!-- Content for this section -->
+            <div class="text-box">
+                <h3>Industrial commercial real estate has become important for businesses and factories, providing
+                    <i><b>secure
+                        storage space</b></i> and access to essential resources The industry is anticipated to
+                    experience a rise
+                    in
+                    demand
+                    in the next few years, along with the great potential for economic growth. Industrial real estate
+                    demand
+                    is
+                    expected to increase by<strong> 850 million square feet</strong>, to <strong>14.8 billion</strong>
+                    square feet, by 2023. </h3>
+            </div>
         </div>
 
     </section>
@@ -288,20 +507,24 @@
         <div class="container-mid">
 
             <h2>Recommendations</h2>
-            <h3>The consistent expansion in industrial real estate, fueled by technological advancements, highlights a
-                significant trend in the industry. This evolution opens up valuable opportunities for investors and
-                developers to leverage emerging trends for notable returns. The rapid development in fields like
-                e-commerce,
-                logistics, automation, and AI, especially with advancing technologies, presents a distinct competitive
-                edge
-                in today's market.</h3><!-- Content for this section -->
+            <div class="text-box">
+                <h3>The consistent expansion in industrial real estate, fueled by technological advancements, highlights
+                    a
+                    significant trend in the industry. This evolution opens up valuable opportunities for investors and
+                    developers to leverage emerging trends for notable returns. The rapid development in fields like
+                    e-commerce,
+                    logistics, automation, and AI, especially with advancing technologies, presents a distinct
+                    competitive
+                    edge
+                    in today's market.</h3>
+            </div>
         </div>
 
     </section>
 
     <!-- Acknowledgments -->
     <section class="section" id="acknowledgments">
-        <div class="container-mid acknowledgments-container">
+        <div class="acknowledgments-container">
 
             <h3>Acknowledgments</h3>
             <p align="justify">We extend our sincere gratitude to our colleagues at a private equity company for their
@@ -309,7 +532,8 @@
                 instrumental in enhancing our skills and elevating the quality of our visualizations. We are immensely
                 thankful to the company for generously sharing their data and resources, which significantly contributed
                 to the success of our project.</p><br>
-            <p align="justify">We would also like to express our profound appreciation to the entire CS171 teaching team for their
+            <p align="justify">We would also like to express our profound appreciation to the entire CS171 teaching team
+                for their
                 exceptional guidance during labs and office hours. Our journey through this course has equipped us with
                 valuable skills in HTML, CSS, JS, and D3, which we are eager to apply in our professional roles and
                 future learning endeavors.</p>
@@ -381,9 +605,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     console.log("Script loaded");
-    window.addEventListener('scroll', () => {
-        console.log("Window scroll event fired");
-    });
     window.addEventListener('DOMContentLoaded', () => {
         // Add fade-in effect to all h1 elements
         document.querySelectorAll('h1').forEach(h1 => {
@@ -403,46 +624,6 @@
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
-
-
-        // Function to update the dot navigation based on current scroll position
-        function updateDotNavigation() {
-            const sections = document.querySelectorAll('.section');
-            const dots = document.querySelectorAll('.dot-navigation .dot');
-            let currentActiveIndex = -1; // Track the current active section index
-
-            sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const scrollPosition = window.scrollY;
-
-                console.log(`Section: ${index}, Top: ${sectionTop}, Height: ${sectionHeight}, Scroll: ${scrollPosition}`);
-
-                // Check if section is in view
-                if (scrollPosition >= (sectionTop - sectionHeight / 2) && scrollPosition < sectionTop + sectionHeight / 2) {
-                    currentActiveIndex = index;
-                    console.log(`Active Section: ${index}`);
-                }
-            });
-
-            // Update active dot based on current active section
-            dots.forEach((dot, index) => {
-                if (index === currentActiveIndex) {
-                    dot.classList.add('active');
-                    console.log(`Active Dot: ${index}`);
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // Scroll event listener to update dot navigation
-        window.addEventListener('scroll', function () {
-            console.log("Scroll event fired");
-            updateDotNavigation();
-        });
-
-
     });
 </script>
 
@@ -471,6 +652,7 @@
 <script src="js/vectom.js"></script>
 <script src="js/canadaMap.js"></script>
 <script src="js/stackedChart.js"></script>
+<script src="js/national.js"></script>
 <script src="js/main.js"></script>
 
 <!--==============================================================================================-->
