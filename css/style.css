@@ -5,13 +5,13 @@
     --color-profile: srgb;
     --color-mode: light;
     --color-text: #000000;
-    --color-background: rgba(255, 255, 255, 0.71);
-    --text-background: rgba(255, 255, 255, 0.84);
+    --color-background: rgba(255, 255, 255, 0.5);
+    --text-background: rgba(255, 255, 255, 0.7);
     --myshadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.78);
 
-    --color-primary: rgba(124, 204, 229, 0.5);
-    --color-secondary: rgba(181, 118, 173, 0.5);
-    --color-accent: rgba(253, 228, 127, 0.5);
+    --color-primary: rgba(124, 204, 229, 0.3);
+    --color-secondary: rgba(181, 118, 173, 0.3);
+    --color-accent: rgba(253, 228, 127, 0.3);
 
 
     --background1: linear-gradient(var(--color1), #000000);
@@ -52,7 +52,8 @@ a:hover {
 }
 
 /* Adjust the size of the columns */
-@media (min-width: 992px) { /* Adjust based on your layout breakpoints */
+@media (min-width: 992px) {
+    /* Adjust based on your layout breakpoints */
     .col-lg-8 {
         flex: 0 0 66.66667%;
         max-width: 66.66667%;
@@ -151,7 +152,6 @@ strong {
 /*}*/
 
 
-
 .scroll-container {
     overflow-y: auto;
     scroll-snap-type: y mandatory;
@@ -248,6 +248,7 @@ strong {
     /*margin-right: auto;*/
     /*margin-left: auto;*/
 }
+
 .container-bottom {
     z-index: 100;
     font-size: 0.65em;
@@ -257,6 +258,7 @@ strong {
     /*margin-right: auto;*/
     /*margin-left: auto;*/
 }
+
 /*----------------------------------------------*/
 /* Dot Navigation
 /*----------------------------------------------*/
@@ -365,6 +367,7 @@ strong {
     border-radius: 1rem;
     margin-bottom: 15px;
 }
+
 .vis-container1 svg {
     width: auto;
     height: 100%;
@@ -382,6 +385,7 @@ strong {
     width: 60vw;
     margin: 15px;
 }
+
 #mortgage_vis .vis-container1,
 #consumer_vis .vis-container1 {
     display: flex;
@@ -390,12 +394,14 @@ strong {
     border-radius: 1rem;
     margin-bottom: 15px;
 }
-#mortgage_vis .vis-container1 svg ,
+
+#mortgage_vis .vis-container1 svg,
 #consumer_vis .vis-container1 svg {
     width: 100%;
     height: auto;
     fill: var(--color6);
 }
+
 /*#mortgage_vis,*/
 /*#unemployment_vis {*/
 /*    height: 20vh;*/
@@ -405,7 +411,8 @@ strong {
 
 
 /* Responsive adjustments */
-@media (max-width: 992px) { /* Adjust based on your layout breakpoints */
+@media (max-width: 992px) {
+    /* Adjust based on your layout breakpoints */
     .col-lg-4, .col-lg-8 {
         flex-basis: 100%; /* Forces columns to take full width on smaller screens */
         max-width: 100%; /* Ensures columns do not exceed the width of the container */
@@ -444,6 +451,7 @@ strong {
 #real-estate-sectors-and-vectom {
     background-color: var(--color-secondary);
 }
+
 /*.canada-icon {*/
 /*    top: 10%;*/
 /*    margin: 30px;*/
@@ -486,9 +494,9 @@ strong {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: var(--text-background);
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 1rem;
     transition: fill 0.3s;
     height: auto;
@@ -548,7 +556,7 @@ strong {
 }
 
 .sector-icon {
-    fill: white;
+    fill: black;
     margin: 10px;
     width: 150px;
     height: 150px;
@@ -673,6 +681,7 @@ h6 {
     pointer-events: auto;
     border-radius: 1rem;
 }
+
 /*----------------------------------------------*/
 /* Performance Trends
 /*----------------------------------------------*/
@@ -771,7 +780,7 @@ h5 {
 #table-box {
     opacity: 0.9;
     text-align: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
 }
 
 th {
@@ -842,14 +851,14 @@ td {
 }
 
 #commentary-box, #commentary-bar {
-    border-radius: 20px;
+    border-radius: 1rem;
     padding: 15px 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow for a 3D effect */
     width: auto;
     max-width: 85%;
     text-align: center;
-    font-size: 14px;
-    color: var(--color3);
+    font-size: 1rem;
+    color: var(--color-text);
     margin: 10px auto;
     transition: all 0.1s ease-in-out;
 }
@@ -877,6 +886,7 @@ td {
     padding: 0;
     line-height: 1.5;
 }
+
 /*Buttons and Others*/
 
 /*Play, Forward, Back buttons*/
@@ -885,7 +895,7 @@ td {
     margin-bottom: 2vh;
     color: var(--color-text);
     font-size: 14px;
-    background-color: var(--color-background);
+    /*background-color: var(--color-background);*/
     border-radius: 0.5rem;
 }
 
@@ -900,26 +910,27 @@ td {
     margin: .5vh;
 }
 
-#sortSelection, #dataSelection, #metricSelect, #lollipop-heading  {
-    background-color: var(--color-background);
+#sortSelection, #dataSelection, #metricSelect, #lollipop-heading {
+    /*background-color: var(--color-background);*/
     color: var(--color-text);
 }
 
 #sortSelection:hover, #dataSelection:hover, #metricSelect:hover {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: var(--color5);
 }
 
 .source {
     font-size: 12px;
-    color: var(--color2);
+    color: var(--color-text);
 }
 
 /*Buttons*/
 .mt-2 {
-    color: var(--color2);
+    color: var(--color-text);
     margin: 1vh;
-    font-size: 11px;
+    font-size: 1rem;
 }
+
 /*----------------------------------------------*/
 /* Market Leaders
 /*----------------------------------------------*/
@@ -1029,6 +1040,7 @@ td {
     justify-content: space-around;
     align-items: center;
 }
+
 .vis-container4 svg {
     justify-content: center;
     align-items: center;
@@ -1104,6 +1116,7 @@ td {
     margin: 40px 40px;
     border-radius: 1rem;
 }
+
 .vis-container2 svg {
     width: 70%;
     height: auto;
