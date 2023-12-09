@@ -53,10 +53,19 @@
 
     em {
         margin-left: 10px;
-        font-size: .7rem;
+        font-size: .5rem;
         color: var(--color-text)
     }
 }
+
+.theme-switch-wrapper em {
+    margin-right: 10px; /* Moves the label to the left of the toggle */
+    font-size: .8rem; /* Adjusts the size of the font */
+    font-style: normal; /* Removes italic styling */
+    color: var(--color-text); /* Ensures text color is controlled by the variable */
+    order: -1; /* This ensures that the label comes before the toggle switch */
+}
+
 .theme-switch {
     display: inline-block;
     height: 34px;

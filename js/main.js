@@ -160,15 +160,19 @@ function initMainPage(dataArray) {
         });
     });
 
-    //site theme change
+    // Site theme change
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
+    const themeToggleLabel = document.getElementById('theme-toggle-label'); // Make sure you have this element in your HTML
 
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
 
         if (currentTheme === 'dark') {
             toggleSwitch.checked = true;
+            themeToggleLabel.textContent = 'Enable Light Mode!'; // Set the text for dark mode
+        } else {
+            themeToggleLabel.textContent = 'Enable Dark Mode!'; // Set the text for light mode
         }
     }
 
@@ -176,13 +180,17 @@ function initMainPage(dataArray) {
         if (e.target.checked) {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
+            themeToggleLabel.textContent = 'Enable Light Mode!'; // Change the text when dark mode is enabled
         }
-        else {        document.documentElement.setAttribute('data-theme', 'light');
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
+            themeToggleLabel.textContent = 'Enable Dark Mode!'; // Change the text when light mode is enabled
         }
     }
 
     toggleSwitch.addEventListener('change', switchTheme, false);
+
 }
 
 // Function to update the dot navigation based on current scroll position
