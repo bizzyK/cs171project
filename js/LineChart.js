@@ -56,18 +56,16 @@ class LineChart {
         vis.svg.append("g")
             .attr("class", "y-axis axis");
 
-        // Graph title, written like this to span two lines
+        // Append title for the chart at the top
         vis.svg.append("text")
             .attr("class", "graph-title")
-            .attr("x", -25)
-            .attr("y", -30)
-            .text("Year-over-year change ")
-            .style("fill",  "var(--color-text)")
-            .append("tspan")
-            .attr("dx", -100)
-            .attr("dy", 15)
-            .style("fill",  "var(--color-text)")
-            .text("in GDP(%)");
+            .attr("x", vis.width / 2)
+            .attr("y", -25)
+            .attr("text-anchor", "middle")
+            .style("font-size", ".7em")
+            .style("font-weight", "bold")
+            .attr("fill", "currentColor")
+            .text("Year-over-year change in GDP(%)");
 
         const highlightedPeriods = [
             { start: new Date("1986-01-01"), end: new Date("1991-01-01"), label: "Oil Crisis" },

@@ -59,7 +59,7 @@ class AreaChart {
         // Append title for the chart at the top
         vis.svg.append("text")
             .attr("x", vis.width / 2)
-            .attr("y", 0)
+            .attr("y", -5)
             .attr("text-anchor", "middle")
             .style("font-size", ".7em")
             .style("font-weight", "bold")

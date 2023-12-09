@@ -159,6 +159,7 @@ class dualChart {
             .attr("y", -80)
             .attr("dy", "1em")
             .style("text-anchor", "end")
+            .attr("fill", "currentColor")
             .style("font-size", "1rem")
             .text("Absorption (LHS) & New Supply (LHS)");
 
@@ -173,7 +174,7 @@ class dualChart {
             .attr("dy", ".1em")
             .style("text-anchor", "end")
             .style("font-size", "1rem")
-            .style("fill", vis.textColor)
+            .attr("fill", "currentColor")
             .text("Availability Rate (RHS)");
 
 
@@ -413,7 +414,7 @@ class dualChart {
             .attr("y", 9)
             .attr("dy", ".35em")
             .style("text-anchor", "start") // Align text to start at the given x position
-            .style("fill", vis.textColor)
+            .attr("fill", "currentColor")
             .text(function(d) { return d; });
 
         // // Calculate the width of each legend item by summing up widths of text and rects

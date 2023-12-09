@@ -127,10 +127,10 @@ class cBarChart {
         // Initialize title
         vis.graphTitle = vis.svg.append('text')
             .attr("class", "graph-title")
-            .attr("x", -200)
+            .attr("x", vis.width / 2 -200)
             .attr("y", -10)
             .style("fill",  "var(--color-text)")
-            .text("Change in Consumer Spending from 1980-01-01 to 2023-09-01");
+            .text("Change in Consumer Spending");
         
         // (Filter, aggregate, modify data)
         vis.wrangleData();
