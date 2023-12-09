@@ -5,7 +5,7 @@
     --color-profile: srgb;
     --color-mode: light;
     --color-text: #000000;
-    --color-background: rgb(255, 255, 255);
+    --color-background: rgba(255, 255, 255, 0.71);
     --text-background: rgba(255, 255, 255, 0.84);
     --myshadow: .1rem .1rem .1rem rgba(0, 0, 0, 0.78);
 
@@ -194,10 +194,10 @@ strong {
 }
 
 .black-background-container {
-    /*background-color: var(--color-background); !* Black background *!*/
+    background-color: var(--color-background); /* Black background */
     color: #000000; /* White text color for contrast */
     height: 100%;
-    width: 100%; /* Set a fixed width or percentage as per your design */
+    width: 90%; /* Set a fixed width or percentage as per your design */
     margin: 0 auto; /* Center the container */
     padding: 10px; /* Add some padding */
     border-radius: 1rem;
