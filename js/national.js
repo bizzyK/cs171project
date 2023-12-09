@@ -147,10 +147,12 @@ class dualChart {
 
         vis.svg.append("g")
             .attr("class", "x axis")
+            .style("fill", vis.textColor)
             .attr("transform", "translate(0," + vis.height + ")");
 
         vis.svg.append("g")
             .attr("class", "y0 axis")
+            .style("fill", vis.textColor)
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", -45)
@@ -158,11 +160,11 @@ class dualChart {
             .attr("dy", "1em")
             .style("text-anchor", "end")
             .style("font-size", "1rem")
-            .style("fill", vis.textColor)
             .text("Absorption (LHS) & New Supply (LHS)");
 
         vis.svg.append("g")
             .attr("class", "y1 axis")
+            .style("fill", vis.textColor)
             .attr("transform", "translate(" + vis.width + ",0)")
             .append("text")
             .attr("transform", "rotate(90)")

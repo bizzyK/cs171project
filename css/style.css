@@ -33,6 +33,16 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    text-decoration: none; /* Removes underline */
+    color: var(--color-text); /* Sets the hyperlink color, replace with your desired color */
+}
+
+/* If you want to change the color on hover as well */
+a:hover {
+    color: var(--color-primary); /* Darker blue on hover, replace with your desired hover color */
+}
+
 /* Ensure that the container of the visualizations is a flex container */
 .row {
     display: flex;
@@ -363,7 +373,7 @@ strong {
 
 #macro_vis2 {
     height: 200px; /* Fixed height */
-    width: 100%; /* Takes 90% of the parent width */
+    width: 90%; /* Takes 90% of the parent width */
     margin: 0 auto; /* Center within the parent */
 }
 
