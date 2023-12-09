@@ -110,8 +110,8 @@ function initMainPage(dataArray) {
     //macroChart = new LineChart("macro_vis", macro_data, macroEventHandler)
     macroChart = new LineChart("macro_vis2", macro_data, macroEventHandler)
     consumerChart = new cBarChart("consumer_vis", consumer_data, colors, macroEventHandler)
-    unemploymentChart = new AreaChart("unemployment_vis", macro_data, "unemployment", colors)
-    mortgageChart = new AreaChart("mortgage_vis", housing_data, "mortgage_rates", colors)
+    unemploymentChart = new AreaChart("unemployment_vis", macro_data, "unemployment", colors, "Unemployment Rate Over Time")
+    mortgageChart = new AreaChart("mortgage_vis", housing_data, "mortgage_rates", colors, "Mortgage Rates Trends")
 
     macroEventHandler.bind("selectionChanged", function (event) {
         let rangeStart = event.detail[0];

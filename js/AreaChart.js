@@ -1,10 +1,10 @@
 class AreaChart {
 
-    constructor(_parentElement, _data, selected_column, _colors) {
+    constructor(_parentElement, _data, selected_column, _colors, _chartTitle) {
         this.parentElement = _parentElement;
         this.data = _data;
         this.colors = _colors;
-        // this.eventHandler = _eventHandler;
+        this.chartTitle = _chartTitle;
         this.selected_column = selected_column;
 
         this.initVis();
@@ -55,6 +55,16 @@ class AreaChart {
 
         vis.svg.append("g")
             .attr("class", "y-axis axis");
+
+        // Append title for the chart at the top
+        vis.svg.append("text")
+            .attr("x", vis.width / 2)
+            .attr("y", 0)
+            .attr("text-anchor", "middle")
+            .style("font-size", ".7em")
+            .style("font-weight", "bold")
+            .attr("fill", "currentColor")
+            .text(vis.chartTitle);
 
         // // Axis title
         // vis.svg.append("text")

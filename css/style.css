@@ -803,6 +803,7 @@ h5 {
 .tooltip h4, .tooltip h5 {
     margin: 0;
     padding: 0;
+    border-radius: 1rem;
 }
 
 .legend {
@@ -1047,21 +1048,21 @@ td {
 
 #industrial-graph .y0.axis path,
 #industrial-graph .y0.axis line {
-    stroke: #98abc5;
+    stroke: var(--color-text);
 }
 
 #industrial-graph .y1.axis path,
 #industrial-graph .y1.axis line {
-    stroke: #d0743c;
+    stroke: var(--color-text);
 }
 
 #industrial-graph .x.axis path,
 #industrial-graph .x.axis line {
-    stroke: #d0743c;
+    stroke: var(--color-text);
 }
 
 #industrial-graph .x.axis text {
-    fill: black;
+    fill: var(--color-text);
 }
 
 #industrial-graph .triangle-button {
@@ -1182,6 +1183,12 @@ td {
     height: auto;
 }
 
+#industrial-rent-growth h4 {
+    font-size: 1.7em;
+    font-weight: unset;
+    justify-content: center;
+    color: var(--color-text);
+}
 /* ------------------------------------*/
 /* Industrial Opportunity
 /*----------------------------------------------*/

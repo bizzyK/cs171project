@@ -175,7 +175,7 @@ class stackedChart {
             .append("text")
             .attr("x", -10)
             .attr("y", 20)
-            .attr("fill", vis.textColor)
+            .attr("fill", "currentColor")
             .text(d => d);
 
 
@@ -371,6 +371,7 @@ class stackedChart {
 
         // Update the y-axis label text
         vis.yAxisLabel
+            .attr("fill", "currentColor")
             .text(vis.selectedSector === 'vacancy' ? 'Availability Rate %' : 'Rent Growth Rate (net rent / psf)');
 
         // Tooltip interaction
@@ -421,7 +422,7 @@ class stackedChart {
             'rentGrowth': "img/rentGrowth.svg"
         };
         // Select the h3 element
-        const header = document.querySelector('#industrial-rent-growth h3');
+        const header = document.querySelector('#industrial-rent-growth h4');
 
         Object.entries(sectors).forEach(([sector, iconPath]) => {
             fetch(iconPath)
