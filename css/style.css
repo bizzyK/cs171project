@@ -477,7 +477,7 @@ strong {
 }
 
 #content {
-    bottom: 210px;
+    bottom: 220px;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -489,7 +489,7 @@ strong {
 
 .content-card {
     position: relative;
-    width: 75%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     min-width: 0;
@@ -538,21 +538,12 @@ strong {
 #sectors-container,
 #industrial-container {
     position: relative;
-    max-height: 90%;
+    max-height: 70%;
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-#industrial1 .sector-icon {
-    fill: var(--color2);
-    margin: 20px;
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    transition: fill 0.5s;
 }
 
 .sector-icon {
