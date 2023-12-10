@@ -2,18 +2,23 @@
 *           MAIN           *
 * * * * * * * * * * * * * */
 
-
 // Combined Global Variables
 let myMap, VectomMap, myNationalVis, myStackedChart;
 let macroChart, consumerChart, unemploymentChart, mortgageChart;
 
 // Function to convert date objects to strings or reverse
 let dateParser = d3.timeParse("%m/%d/%Y");
-
+let dateFormat = d3.timeFormat("%Y-%m-%d");
 
 let geoDataPath = "data/canada.topo.json";
 let populationDataPath = "data/canada_provinces_pop.csv";
 
+let macroTooltipText = {
+    macro: "macro filler text",
+    consumer: "consumer filler text",
+    unemployment: "unemployment filler text",
+    mortgage: "mortgage filler text"
+};
 
 let promises = [
     d3.csv("data/macro.csv"),
@@ -32,7 +37,9 @@ Promise.all(promises)
         // Rename the column in the first dataset only
         const renamedData = data.map(function (dataset, index) {
             if (index === 0) {
-                return dataset.map(function (row) {
+                return dataset
+                    .filter(row => dateFormat(dateParser(row['Date'])) <= '2023-12-01')
+                    .map(function (row) {
                     return {
                         date: dateParser(row['Date']),
                         unemployment: +row['Unemployment rate'],
@@ -41,7 +48,9 @@ Promise.all(promises)
                     };
                 });
             } else if (index === 1) {
-                return dataset.map(function (row) {
+                return dataset
+                    .filter(row => dateFormat(dateParser(row['Date'])) <= '2023-12-01')
+                    .map(function (row) {
                     return {
                         date: dateParser(row['Date']),
                         clothing: +row['Consumer spending, nominal, LCU - Clothing and footwear - Total'],
@@ -61,7 +70,9 @@ Promise.all(promises)
                     }
                 })
             } else if (index === 2) {
-                return dataset.map(function (row) {
+                return dataset
+                    .filter(row => dateFormat(dateParser(row['Date'])) <= '2023-12-01')
+                    .map(function (row) {
                     return {
                         date: dateParser(row['Date']),
                         sale_price_index: +row['CREA Average Residential Sale Price Index'],
@@ -108,10 +119,10 @@ function initMainPage(dataArray) {
     }
 
     //macroChart = new LineChart("macro_vis", macro_data, macroEventHandler)
-    macroChart = new LineChart("macro_vis2", macro_data, macroEventHandler)
-    consumerChart = new cBarChart("consumer_vis", consumer_data, colors, macroEventHandler)
-    unemploymentChart = new AreaChart("unemployment_vis", macro_data, "unemployment", colors, "Unemployment Rate")
-    mortgageChart = new AreaChart("mortgage_vis", housing_data, "mortgage_rates", colors, "Mortgage Rates")
+    macroChart = new LineChart("macro_vis2", macro_data, macroEventHandler, macroTooltipText.macro)
+    consumerChart = new cBarChart("consumer_vis", consumer_data, colors, macroTooltipText.consumer)
+    unemploymentChart = new AreaChart("unemployment_vis", macro_data, "unemployment", colors, "Unemployment Rate", macroTooltipText.unemployment)
+    mortgageChart = new AreaChart("mortgage_vis", housing_data, "mortgage_rates", colors, "Mortgage Rates", macroTooltipText.mortgage)
 
     macroEventHandler.bind("selectionChanged", function (event) {
         let rangeStart = event.detail[0];
@@ -130,6 +141,27 @@ function initMainPage(dataArray) {
     document.getElementById('resetButton').addEventListener('click', () => {
         VectomMap.resetToCurrentPopulation(); //
     });
+
+
+    // Attach event listeners to scroll buttons
+    const scrollLeftHandler = (event) => {
+        event.stopPropagation();
+        myNationalVis.scrollLeft();
+    };
+
+    const scrollRightHandler = (event) => {
+        event.stopPropagation();
+        myNationalVis.scrollRight();
+    };
+
+    document.getElementById('scroll-left').removeEventListener('click', scrollLeftHandler);
+    document.getElementById('scroll-left').addEventListener('click', scrollLeftHandler);
+
+    document.getElementById('scroll-right').removeEventListener('click', scrollRightHandler);
+    document.getElementById('scroll-right').addEventListener('click', scrollRightHandler);
+
+
+
 
     //update dot navigation
     // Initialize an IntersectionObserver for dot navigation
@@ -236,24 +268,6 @@ function initMainPage(dataArray) {
 
     toggleSwitch.addEventListener('change', switchTheme, false);
 
-}
-
-// Function to update the dot navigation based on current scroll position
-function updateDotNavigation() {
-    const sections = document.querySelectorAll('.section');
-    const dots = document.querySelectorAll('.dot-navigation .dot');
-
-    sections.forEach((section, index) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const scrollPosition = window.scrollY;
-
-        // Update active dot based on current active section
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
-    });
 }
 
 // For Macro Dash

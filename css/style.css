@@ -472,21 +472,41 @@ strong {
     margin: 15px;
 }
 
-#mortgage_vis .vis-container1,
-#consumer_vis .vis-container1 {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60vw;
-    border-radius: 1rem;
-    margin-bottom: 15px;
+#mortgage_vis {
+    height: auto;
+    width: 23vw;
+    margin: 15px;
 }
 
-#mortgage_vis .vis-container1 svg,
-#consumer_vis .vis-container1 svg {
-    width: 100%;
+#unemployment_vis {
     height: auto;
-    fill: var(--color6);
+    width: 23vw;
+    margin: 15px;
 }
+
+.speech-bubble {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-color: black;
+}
+
+/*#mortgage_vis .vis-container1,*/
+/*#consumer_vis .vis-container1 {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    width: 60vw;*/
+/*    border-radius: 1rem;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*#mortgage_vis .vis-container1 svg,*/
+/*#consumer_vis .vis-container1 svg {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*    fill: var(--color6);*/
+/*}*/
 
 /*#mortgage_vis,*/
 /*#unemployment_vis {*/

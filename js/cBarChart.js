@@ -1,12 +1,13 @@
 class cBarChart {
 
-    constructor(_parentElement, _data, _colors) {
+    constructor(_parentElement, _data, _colors, _tooltipText) {
         this.parentElement = _parentElement;
         this.data = _data;
         this.totalColor = _colors.totalColor;
         this.essentialColor = _colors.essentialColor;
         this.discretionaryColor = _colors.discretionaryColor;
         this.housingColor = _colors.housingColor;
+        this.tooltipText = _tooltipText;
 
 
         this.colorScale = {
@@ -28,7 +29,7 @@ class cBarChart {
 
         // console.log("vis.market_change_data: ", vis.market_change_data)
 
-        vis.margin = { top: 40, right: 60, bottom: 60, left: 200 };
+        vis.margin = { top: 40, right: 150, bottom: 60, left: 200 };
 
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = 462.5 - vis.margin.top - vis.margin.bottom;
@@ -100,7 +101,7 @@ class cBarChart {
         // Legend container
         var legend = vis.svg.append("g")
             .attr("class", "legend")
-            .attr("transform", "translate(500, 250)"); // Adjust positioning as needed
+            .attr("transform", "translate(" + (vis.width + 20) + ", 250)"); // Adjust positioning as needed
 
         // Add a square for each legend item
         var legendItems = legend.selectAll(".legend-item")
@@ -131,6 +132,27 @@ class cBarChart {
             .attr("y", -10)
             .style("fill",  "var(--color-text)")
             .text("Change in Consumer Spending");
+
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        // // Add (?) symbol for the tooltip
+        vis.graphTitle.append("tspan")
+            .attr("class", "tooltip-trigger")
+            .style("cursor", "pointer")
+            .text(" ⓘ")
+            .on("mouseover", function (event) {
+                tooltip.transition().style("opacity", 1);
+
+                // Create a speech bubble with a white background
+                tooltip.html('<div class="speech-bubble">' + vis.tooltipText + '</div>')
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 15) + "px");
+            })
+            .on("mouseout", function () {
+                tooltip.transition().style("opacity", 0);
+            });
         
         // (Filter, aggregate, modify data)
         vis.wrangleData();

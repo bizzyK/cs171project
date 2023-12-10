@@ -28,6 +28,18 @@ class dualChart {
 
         this.loadData();
         this.initVis();
+        const { currentYear, currentQuarter } = this.getCurrentQuarter();
+
+        // Find the index of the data entry that matches the current time
+        const currentIndex = this.data.findIndex(d => {
+            const year = d.parsedDate.getFullYear();
+            const quarter = Math.ceil((d.parsedDate.getMonth() + 1) / 3);
+            return year === currentYear && quarter === currentQuarter;
+        });
+
+        this.visibleYears = 5; // Or any other number of years you want to display
+        this.startIndex = Math.max(0, currentIndex - this.visibleYears * 4);
+
     }
 
 
@@ -83,15 +95,13 @@ class dualChart {
             return year >= vis.startYear && year <= currentYear;
         });
 
-        console.log("Filtered data for 6 years =", vis.data);
+        console.log("Filtered data for 5 years =", vis.data);
     }
 
 
     initVis() {
 
         let vis = this;
-        vis.startIndex = 0; // Initialize startIndex
-        vis.visibleYears = 6; // Set the number of years you want to display
         vis.legendY = - 10;
 
         console.log("vis.data=", vis.data);
@@ -228,6 +238,26 @@ class dualChart {
         vis.newDomain = vis.nestedData.slice(vis.startIndex, vis.startIndex + vis.visibleYears).map(d => d.key);
         vis.x0.domain(vis.newDomain);
 
+        // Calculate the new domains for y0 and y1 scales after slicing the data
+        let y0Values = [];
+        let y1Values = [];
+
+        slicedData.forEach(year => {
+            year.values.forEach(quarter => {
+                quarter.values.forEach(d => {
+                    if (d.name !== 'Availability Rate (RHS)') {
+                        y0Values.push(d.value);
+                    } else {
+                        y1Values.push(d.value);
+                    }
+                });
+            });
+        });
+
+        // Update the domains of y0 and y1 scales
+        vis.y0.domain([0, d3.max(y0Values)]).nice();
+        vis.y1.domain([0, d3.max(y1Values)]).nice();
+
         vis.svg.select(".x.axis").call(vis.xAxis);
 
 
@@ -269,16 +299,31 @@ class dualChart {
         // console.log("Nested data values: ", vis.nestedData.map(yearObj => yearObj.values.map(quarterObj => quarterObj.values.map(v => `${v.name}: ${v.value}`))));
         //
 
+        // vis.barGroups = vis.svg.selectAll(".bar-group")
+        //     .data(vis.nestedData)
+        //     .enter()
+        //     .append("g")
+        //     .attr("class", "bar-group")
+        //     .attr("transform", function (d) {
+        //         // Debugging: Log the value being used in the translate function
+        //         console.log("Transforming group with key:", d.key, "x0 position:", vis.x0(d.key));
+        //         return `translate(${vis.x0(d.key)},0)`;
+        //     });
+
+        // Update pattern for bar groups
         vis.barGroups = vis.svg.selectAll(".bar-group")
-            .data(vis.nestedData)
-            .enter()
+            .data(vis.nestedData, d => d.key);
+
+        vis.barGroups.exit().remove();
+
+        let barGroupsEnter = vis.barGroups.enter()
             .append("g")
-            .attr("class", "bar-group")
-            .attr("transform", function (d) {
-                // Debugging: Log the value being used in the translate function
-                console.log("Transforming group with key:", d.key, "x0 position:", vis.x0(d.key));
-                return `translate(${vis.x0(d.key)},0)`;
-            });
+            .attr("class", "bar-group");
+
+        vis.barGroups = barGroupsEnter.merge(vis.barGroups);
+
+        vis.barGroups.attr("transform", d => `translate(${vis.x0(d.key)},0)`);
+
 
         // Loop through each year group
         vis.barGroups.each(function (yearData) {
@@ -351,10 +396,23 @@ class dualChart {
             })
             .y(d => vis.y1(d.value));
 
-        // Draw the line for Availability Rate
+       /* // Draw the line for Availability Rate
         vis.svg.append("path")
             .datum(vis.lineData) // bind the processed data to the path
             .attr("class", "line-availability-rate")
+            .attr("d", vis.lineGenerator)
+            .style("stroke", vis.vColor)
+            .style("stroke-width", "2px")
+            .style("fill", "none");*/
+
+        // Update the line for Availability Rate (RHS)
+        let line = vis.svg.selectAll(".line-availability-rate")
+            .data([vis.lineData], d => d.date);
+
+        line.enter()
+            .append("path")
+            .attr("class", "line-availability-rate")
+            .merge(line)
             .attr("d", vis.lineGenerator)
             .style("stroke", vis.vColor)
             .style("stroke-width", "2px")
@@ -379,6 +437,10 @@ class dualChart {
             .style("fill", vis.tColor)
             .style("stroke", vis.backgroundColor)
             .style("stroke-width", "1px");
+
+        // Update axes with new scales
+        vis.svg.select(".y0.axis").call(vis.yAxisLeft);
+        vis.svg.select(".y1.axis").call(vis.yAxisRight);
 
         vis.renderLegend();
 
@@ -421,23 +483,57 @@ class dualChart {
             .text(function(d) { return d; });
     }
 
-    // Scroll left function
-    scrollLeft() {
-        let vis = this;
-        if (vis.startIndex > 0) {
-            vis.startIndex -= 1;
-            vis.wrangleData();
-        }
+    //Determine the Current Time
+     getCurrentQuarter() {
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentQuarter = Math.floor((currentDate.getMonth() + 3) / 3);
+        return { currentYear, currentQuarter };
     }
 
-    // Scroll right function
-    scrollRight() {
-        let vis = this;
-        if (vis.startIndex < vis.nestedData.length - vis.visibleYears) {
-            vis.startIndex += 1;
-            vis.wrangleData();
+    // // Scroll left function
+    // scrollLeft() {
+    //     let vis = this;
+    //     console.log("Scrolling left"); // Add this line
+    //     // Ensure we don't go past the beginning of the data array
+    //     if (vis.startIndex >= 4) {
+    //         vis.startIndex -= 4; // Move back one year (4 quarters)
+    //         vis.wrangleData();
+    //     }
+    //     console.log("Updated startIndex after scrolling left:", vis.startIndex);
+    // }
+    //
+    // // Scroll right function
+    // scrollRight() {
+    //     let vis = this;
+    //     console.log("Scrolling right"); // Add this line
+    //     // Ensure we don't go past the end of the data array
+    //     if (vis.startIndex <= vis.nestedData.length - vis.visibleYears * 4) {
+    //         vis.startIndex += 4; // Move forward one year (4 quarters)
+    //         vis.wrangleData();
+    //     }
+    //     console.log("Updated startIndex after scrolling right:", vis.startIndex);
+    // }
+
+    scrollLeft() {
+        console.log("Scrolling left");
+        if (this.startIndex > 0) {
+            this.startIndex = Math.max(0, this.startIndex - 4); // Move back one year
+            this.wrangleData();
         }
+        console.log("Updated startIndex after scrolling left:", this.startIndex);
     }
+
+    scrollRight() {
+        const maxIndex = this.data.length - this.visibleYears * 4;
+        console.log("Scrolling right");
+        if (this.startIndex < maxIndex) {
+            this.startIndex = Math.min(maxIndex, this.startIndex + 4); // Move forward one year
+            this.wrangleData();
+        }
+        console.log("Updated startIndex after scrolling right:", this.startIndex);
+    }
+
 
 }
 

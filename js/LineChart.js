@@ -1,9 +1,10 @@
 class LineChart {
 
-    constructor(_parentElement, _data, _macroEventHandler) {
+    constructor(_parentElement, _data, _macroEventHandler, _tooltipText) {
         this.parentElement = _parentElement;
         this.data = _data;
-        this.macroEventHandler = _macroEventHandler;
+        this.macroEventHandler = _macroEventHandler
+        this.tooltipText = _tooltipText;
 
         this.initVis();
     }
@@ -56,17 +57,40 @@ class LineChart {
         vis.svg.append("g")
             .attr("class", "y-axis axis");
 
+        // Define a tooltip div
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
         // Append title for the chart at the top
-        vis.svg.append("text")
+        vis.title = vis.svg.append("text")
             .attr("class", "graph-title")
             .attr("x", vis.width / 2)
             .attr("y", -25)
             .attr("text-anchor", "middle")
             .style("font-size", ".7em")
             .style("font-weight", "bold")
-            .attr("fill", "var(--color-text)")
-            .text("Year-over-year change in GDP(%)")
-            .style("fill",  "var(--color-text)");
+            .style("fill", "var(--color-text)")
+            .text("Year-over-year change in GDP(%)");
+
+        // // Add (?) symbol for the tooltip
+        vis.title.append("tspan")
+            .attr("class", "tooltip-trigger")
+            .style("cursor", "pointer")
+            .text(" ⓘ")
+            .on("mouseover", function (event) {
+                tooltip.transition().style("opacity", 1);
+
+                // Create a speech bubble with a white background
+                tooltip.html('<div class="speech-bubble">' + vis.tooltipText + '</div>')
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 15) + "px");
+            })
+            .on("mouseout", function () {
+                tooltip.transition().style("opacity", 0);
+            });
+
+
 
         const highlightedPeriods = [
             { start: new Date("1986-01-01"), end: new Date("1991-01-01"), label: "Oil Crisis" },
