@@ -131,24 +131,70 @@ function initMainPage(dataArray) {
         VectomMap.resetToCurrentPopulation(); //
     });
 
-    // navigation dots
-    document.addEventListener('scroll', function () {
-        const sections = document.querySelectorAll('.section');
-        const dots = document.querySelectorAll('.dot-navigation .dot');
+    //update dot navigation
+    // Initialize an IntersectionObserver for dot navigation
+    const dotObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Get the section ID from the observed entry
+                const sectionId = entry.target.id;
 
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const pageScroll = document.documentElement.scrollTop;
+                // Find the corresponding dot based on the section ID
+                const dot = document.querySelector(`.dot[data-section="${sectionId}"]`);
 
-            // Check if the section is currently active (in viewport)
-            if (pageScroll >= sectionTop && pageScroll < sectionTop + sectionHeight) {
-                dots[index].classList.add('active');
-            } else {
-                dots[index].classList.remove('active');
+                // Remove the 'active' class from all dots
+                document.querySelectorAll('.dot').forEach((dot) => {
+                    dot.classList.remove('active');
+                });
+
+                // Add the 'active' class to the corresponding dot
+                dot.classList.add('active');
             }
         });
+    }, {threshold: 0.5}); // Adjust the threshold as needed
+
+// Observe all sections with the 'section' class for dot navigation
+    document.querySelectorAll('.section').forEach((section) => {
+        dotObserver.observe(section);
     });
+
+// Button for national graph scroll
+    function toggleScrollButtons(show) {
+        let leftButton = document.getElementById('scroll-left');
+        let rightButton = document.getElementById('scroll-right');
+        if (show) {
+            leftButton.style.display = 'block';
+            rightButton.style.display = 'block';
+        } else {
+            leftButton.style.display = 'none';
+            rightButton.style.display = 'none';
+        }
+    }
+
+// Initialize an IntersectionObserver for the national graph scroll
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                toggleScrollButtons(true);
+            } else {
+                toggleScrollButtons(false);
+            }
+        });
+    }, {threshold: [0.5]});
+
+    let target = document.querySelector('#national-vis');
+    scrollObserver.observe(target);
+
+// Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -181,8 +227,7 @@ function initMainPage(dataArray) {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
             themeToggleLabel.textContent = 'Enable Light Mode!'; // Change the text when dark mode is enabled
-        }
-        else {
+        } else {
             document.documentElement.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
             themeToggleLabel.textContent = 'Enable Dark Mode!'; // Change the text when light mode is enabled

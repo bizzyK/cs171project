@@ -187,6 +187,7 @@ class dualChart {
     initButtons() {
         let vis = this; // Reference to the class instance for use in event handlers
 
+
         // Attach event listeners to buttons
         d3.select('#scroll-left').on('click', function () {
             vis.scrollLeft();
@@ -194,6 +195,8 @@ class dualChart {
         d3.select('#scroll-right').on('click', function () {
             vis.scrollRight();
         });
+
+
     }
 
     // noinspection JSVoidFunctionReturnValueUsed
@@ -416,29 +419,6 @@ class dualChart {
             .style("text-anchor", "start") // Align text to start at the given x position
             .attr("fill", "currentColor")
             .text(function(d) { return d; });
-
-        // // Calculate the width of each legend item by summing up widths of text and rects
-        // vis.legendItemWidths = [];
-        // vis.legend.each(function () {
-        //     vis.legendItemWidths.push(this.getBBox().width + 10); // Add some padding
-        // });
-        //
-        // // Calculate the total width of the legend
-        // vis.legendWidth = d3.sum(vis.legendItemWidths);
-        //
-        // // Calculate the starting position for the legend group
-        // vis.legendStartingX = (vis.width - vis.legendWidth) / 2; // Center the legend
-        //
-        // // Move the legend items to their positions
-        // vis.currentX = 0;
-        // vis.legend.attr("transform", function (d, i) {
-        //     vis.x = vis.currentX;
-        //     vis.currentX += vis.legendItemWidths[i];
-        //     return `translate(${vis.x},0)`;
-        // });
-        //
-        // // Move the whole legend group to the center
-        // vis.legend.attr("transform", `translate(${vis.legendStartingX},${vis.legendY})`);
     }
 
     // Scroll left function
@@ -458,7 +438,6 @@ class dualChart {
             vis.wrangleData();
         }
     }
-
 
 }
 

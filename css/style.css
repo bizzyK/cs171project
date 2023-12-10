@@ -169,6 +169,7 @@ body {
     color: var(--color-text)
 }
 
+
 .section {
     height: 100vh;
     width: 100vw;
@@ -187,7 +188,7 @@ body {
 
 
 .section h1 {
-    font-size: 3.5em;
+    /*font-size: 3.5em;*/
     margin-bottom: 20px;
     font-weight: bolder;
     color: white;
@@ -345,7 +346,7 @@ strong {
     position: fixed;
     right: 18px; /* Adjust as needed */
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateX(50%); /* Center the dots horizontally and vertically */
     z-index: 10;
 }
 
@@ -363,12 +364,16 @@ strong {
 .dot-navigation .dot:hover,
 .dot-navigation .dot:focus {
     background-color: var(--color-background);
+    width: 1rem; /* Increase the width */
+    height: 1rem; /* Increase the height */
 }
 
 .dot-navigation .dot.active {
-    background-color: var(--color4); /* Color change for active dot */
+    background-color: var(--color-background); /* Color change for active dot */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and size */
+    transform: translateX(-0.125rem); /* Center the active dot */
 }
+
 
 /*----------------------------------------------*/
 /* Legend
@@ -390,6 +395,10 @@ strong {
     background-image: url(../img/12.jpg);
     background-size: cover;
     background-attachment: fixed;
+}
+
+.large-title {
+    font-size: 4.5em;
 }
 
 /*----------------------------------------------*/
@@ -1068,11 +1077,13 @@ td {
     background-color: var(--color-secondary);
 }
 
+
+
 #industrial-container {
     position: relative;
     max-height: 100%;
     width: 90%;
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -1097,36 +1108,9 @@ td {
     fill: var(--color-text);
 }
 
-#industrial-graph .triangle-button {
-    /* Your existing styles */
-    background-color: transparent;
-    border-style: solid;
-    border-width: 20px 30px 20px 0;
-    border-color: transparent var(--color4) transparent transparent;
-    cursor: pointer;
-    width: 0;
-    height: 0;
-    position: absolute;
-    display: none;
-}
-
-#industrial-graph #scroll-left {
-    border-width: 20px 0 20px 30px;
-    border-color: transparent transparent transparent var(--color4);
-    top: 35vh;
-    right: 25vw;
-}
-
-#industrial-graph #scroll-right {
-    top: 35vh;
-    left: 25vw;
-}
-
 .vis-container4 {
     height: 80%;
     width: 80%;
-    /*background-color: var(--color-background);*/
-    /*margin: 20px 20px;*/
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -1140,6 +1124,40 @@ td {
     width: auto;
     height: 100%;
 }
+
+/* Initially hide the triangle buttons globally */
+.triangle-button {
+    display: none;
+}
+
+#scroll-left, #scroll-right {
+    display: none;
+}
+
+#industrial-graph #national-container #national-vis .triangle-button {
+    /* Your existing styles */
+    background-color: transparent;
+    border-style: solid;
+    border-width: 20px 30px 20px 0;
+    border-color: transparent var(--color4) transparent transparent;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+#industrial-graph #national-container #national-vis #scroll-left {
+    border-width: 20px 0 20px 30px;
+    border-color: transparent transparent transparent var(--color4);
+    bottom: 10px;
+    right: 15vw;
+}
+
+#industrial-graph #national-container #national-vis #scroll-right {
+    bottom: 10px;
+    left: 15vw;
+}
+
 
 /*----------------------------------------------*/
 /* Technological Advancements

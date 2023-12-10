@@ -65,7 +65,8 @@ class LineChart {
             .style("font-size", ".7em")
             .style("font-weight", "bold")
             .attr("fill", "var(--color-text)")
-            .text("Year-over-year change in GDP(%)");
+            .text("Year-over-year change in GDP(%)")
+            .style("fill",  "var(--color-text)");
 
         const highlightedPeriods = [
             { start: new Date("1986-01-01"), end: new Date("1991-01-01"), label: "Oil Crisis" },
