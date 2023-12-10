@@ -273,7 +273,7 @@ strong {
 .black-background-container {
     background-color: var(--color-background); /* Black background */
     color: var(--color-text); /* White text color for contrast */
-    height: 90%;
+    height: 85%;
     width: 90%; /* Set a fixed width or percentage as per your design */
     margin: 0 auto; /* Center the container */
     padding: 10px; /* Add some padding */
@@ -322,6 +322,7 @@ strong {
     display: flex;
     align-items: center;
     width: 100%;
+    height: 95%;
     /*margin-right: auto;*/
     /*margin-left: auto;*/
 }
@@ -611,8 +612,7 @@ strong {
     stroke: var(--color-text); /* Sets the SVG line color */
 }
 
-#sectors-container,
-#industrial-container {
+#sectors-container {
     position: relative;
     max-height: 80%;
     width: 90%;
@@ -1068,6 +1068,16 @@ td {
     background-color: var(--color-secondary);
 }
 
+#industrial-container {
+    position: relative;
+    max-height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #industrial-graph .y0.axis path,
 #industrial-graph .y0.axis line {
     stroke: var(--color-text);
@@ -1113,8 +1123,8 @@ td {
 }
 
 .vis-container4 {
-    height: 100%;
-    width: 70vw;
+    height: 80%;
+    width: 80%;
     /*background-color: var(--color-background);*/
     /*margin: 20px 20px;*/
     border-radius: 1rem;
@@ -1193,10 +1203,9 @@ td {
 
 
 .vis-container2 {
-    height: 100%; /* adjust based on your needs */
+    height: 90%; /* adjust based on your needs */
     width: 100%;
     /*background-color: var(--color-background);*/
-    margin: 40px 40px;
     border-radius: 1rem;
 }
 
