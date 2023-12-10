@@ -169,7 +169,7 @@ async function loadData(selectedDataset) {
 
 // Adding x-axis line
     svgBubble.append("line")
-        .style("stroke", "grey")
+        .style("stroke", "var(--color-text)")
         .style("stroke-width", "0.5")
         .attr("x1", 0)
         .attr("y1", heightBubble)
@@ -178,7 +178,7 @@ async function loadData(selectedDataset) {
 
 // Adding y-axis line
     svgBubble.append("line")
-        .style("stroke", "grey")
+        .style("stroke", "var(--color-text)")
         .style("stroke-width", "0.5")
         .attr("x1", 0)
         .attr("y1", 0)
@@ -316,8 +316,8 @@ function displayCirclesForYear(data, yearIndex, xScale, yScale, radiusScale, col
     // Update the table box content
     const tableBox = d3.select("#table-box");
     let tableContent = '<table>';
-    tableContent += '<tr><th></th><th style="border-bottom: 0.1px solid var(--color5);">Total Return</th><th style="border-bottom: 0.1px solid var(--color5);">' +
-        'Income Return</th><th style="border-bottom: 0.1px solid var(--color5);">Capital Value (C$)</th></tr>';
+    tableContent += '<tr><th></th><th style="border-bottom: 0.1px solid var(--color-text);">Total Return</th><th style="border-bottom: 0.1px solid var(--color-text);">' +
+        'Income Return</th><th style="border-bottom: 0.1px solid var(--color-text);">Capital Value (C$)</th></tr>';
 
     circlesForYear.forEach(d => {
         const segmentColor = colorScale(d.segment);
@@ -330,7 +330,7 @@ function displayCirclesForYear(data, yearIndex, xScale, yScale, radiusScale, col
     });
 
     // Add the year as the last row
-    tableContent += `<tr><td></td><td colspan="3" style="text-align: end;"><h1>${currentYear}</h1></td></tr>`;
+    tableContent += `<tr><td></td><td colspan="3" style="text-align: end;"><h1 style="color: var(--color-text)">${currentYear}</h1></td></tr>`;
 
     tableContent += '</table>';
     tableBox.html(tableContent);
@@ -389,6 +389,8 @@ function displayCirclesForYear(data, yearIndex, xScale, yScale, radiusScale, col
     //  Tooltip
     const tooltipBubble = d3.select("body").append("div")
         .attr("class", "tooltip")
+        .attr("rx", 5)
+        .attr("ry", 5)
         .style("opacity", 0);
 
     function getTooltipBackgroundColor(segment) {
@@ -446,6 +448,7 @@ function displayCirclesForYear(data, yearIndex, xScale, yScale, radiusScale, col
             .style("stroke", colorScale(d.segment))
             .style("stroke-width", "0.25px");
 
+
         // Append callout label
         let labelBubble = svgBubble.append("text")
             .attr("class", "segment-label")
@@ -467,7 +470,9 @@ function displayCirclesForYear(data, yearIndex, xScale, yScale, radiusScale, col
             .attr("y", bbox.y - 2)
             .attr("width", bbox.width + 4)
             .attr("height", bbox.height + 4)
-            .attr("fill", "black");
+            .attr("fill", "var(--text-background)")
+            .attr("rx", 5)
+            .attr("ry", 5);
     });
 
     /**************************************************************/

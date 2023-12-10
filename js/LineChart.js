@@ -64,7 +64,7 @@ class LineChart {
             .attr("text-anchor", "middle")
             .style("font-size", ".7em")
             .style("font-weight", "bold")
-            .attr("fill", "currentColor")
+            .attr("fill", "var(--color-text)")
             .text("Year-over-year change in GDP(%)");
 
         const highlightedPeriods = [

@@ -34,7 +34,6 @@
     --color-text: rgb(255, 255, 255);
     --color-background: rgba(0, 0, 0, 0.7);
     --text-background: rgba(0, 0, 0, 0.7);
-    /*--myshadow: .1rem .1rem .1rem rgba(255, 255, 255, 0.78);*/
 }
 
 [data-theme="dark"] .inverted-image {
@@ -138,6 +137,7 @@ a:hover {
     flex-wrap: wrap; /* Allows items to wrap as needed */
     margin-right: -15px;
     margin-left: -15px;
+    align-items: center;
 }
 
 /* Adjust the size of the columns */
@@ -222,7 +222,7 @@ body {
 
 .section p {
     font-size: 1.2rem;
-    max-width: 600px;
+    /*max-width: 600px;*/
     margin: 0 auto;
 }
 
@@ -273,7 +273,7 @@ strong {
 .black-background-container {
     background-color: var(--color-background); /* Black background */
     color: var(--color-text); /* White text color for contrast */
-    height: 100%;
+    height: 90%;
     width: 90%; /* Set a fixed width or percentage as per your design */
     margin: 0 auto; /* Center the container */
     padding: 10px; /* Add some padding */
@@ -443,6 +443,13 @@ strong {
     fill: var(--color6);
 }
 
+.col-lg-8, .col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* This will vertically center the content within each column */
+}
+
+
 #macro_vis2 {
     height: 200px; /* Fixed height */
     width: 90%; /* Takes 90% of the parent width */
@@ -607,7 +614,7 @@ strong {
 #sectors-container,
 #industrial-container {
     position: relative;
-    max-height: 70%;
+    max-height: 80%;
     width: 90%;
     display: flex;
     justify-content: center;
@@ -617,7 +624,7 @@ strong {
 
 .sector-icon {
     fill: var(--color-text);
-    margin: 10px;
+    /*margin: 10px;*/
     width: 150px;
     height: 150px;
     position: absolute;
@@ -873,22 +880,25 @@ td {
     position: relative; /* Container for the table and the commentary box */
 }
 
-#commentary-box1, #commentary-box2, #commentary-box3, #commentary-box4 {
+#commentary-box1,
+#commentary-box2,
+#commentary-box3,
+#commentary-box4 {
     display: none; /* Initially hidden */
-    background-color: var(--color5);
-    border-radius: 20px; /* Rounded corners for bubble effect */
-    padding: 15px; /* Padding inside the bubble */
+    background-color: var(--color-background);
+    border-radius: 1rem; /* Rounded corners for bubble effect */
+    padding: 10px; /* Padding inside the bubble */
     margin-top: 2vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
     width: auto; /* Auto width based on content */
-    max-width: 100%; /* Maximum width */
+    /*max-width: 100%; !* Maximum width *!*/
     text-align: center; /* Center align text */
-    font-size: 14px; /* Font size */
-    color: #333; /* Text color */
+    font-size: .6rem; /* Font size */
+    color: var(--color-text); /* Text color */
     /* Position the box */
     position: absolute;
     /*right: 20%;*/
-    left: 20%;
+    left: 30%;
     transform: translateX(0%);
 }
 
@@ -913,10 +923,10 @@ td {
 
 #commentary-box, #commentary-bar {
     border-radius: 1rem;
-    padding: 15px 10px;
+    /*padding: 15px 10px;*/
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow for a 3D effect */
-    width: auto;
-    max-width: 85%;
+    /*width: auto;*/
+    max-width: 100%;
     text-align: center;
     font-size: 1rem;
     color: var(--color-text);
@@ -952,13 +962,25 @@ td {
 
 /*Play, Forward, Back buttons*/
 .btn, .btn1, .btn2, .btn3 {
-    padding: 5px 2px;
+    /*padding: 5px 2px;*/
     margin-bottom: 2vh;
     color: var(--color-text);
-    font-size: 14px;
+    font-size: .75rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+}
+
+
+#capital-growth .btn, .btn1, .btn2, .btn3 {
+    /*padding: 5px 2px;*/
+    margin-bottom: 2vh;
+    color: var(--color-text);
+    font-size: .75rem;
     /*background-color: var(--color-background);*/
     border-radius: 0.5rem;
 }
+
+
 
 .button-container {
     display: flex;
