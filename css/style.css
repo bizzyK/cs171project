@@ -556,19 +556,20 @@ strong {
 }
 
 #canada {
-    margin-top: 10%;
+    margin-top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #content {
-    bottom: 220px;
+
+    bottom: 20%;
     position: relative;
     justify-content: center;
     align-items: center;
     border: none;
-    /*background-color: var(--color-background);*/
     display: flex;
     padding: 15px;
 }
@@ -586,11 +587,6 @@ strong {
     border-radius: 1rem;
     transition: fill 0.3s;
     height: auto;
-
-    /*justify-content: center;*/
-    /*height: auto;*/
-    /*position: absolute;*/
-    /*transition: fill 0.3s;*/
 }
 
 .card-body {
