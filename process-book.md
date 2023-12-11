@@ -620,6 +620,7 @@ Implement the intended changes and check them off your list (e.g., adding “don
 | 1 | Replace picture map with an interactive map of Canada | - [x] |
 | 2 | Distribute the Economic Forces text amongst different sections of the macro dashboard so that it’s easier to digest | - [x] |
 | 3 | Add a legend and change the coloring of the macro dashboard. Also, add more labels in general. | - [x] |
-| 4 | Make the sector dashboard more interactive and focused on the regions of interest | We changed this to just industrial instead of the four sectors |
+| 4 | Make the sector dashboard more interactive and focused on the regions of interest | - [ ] (Changed to just industrial) |
 | 5 | Change the storyline to be more targeted towards our industrial recommendation | - [x] |
 | 6 | Add one-liner headings for our recommendations | - [x] |
+
