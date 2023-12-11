@@ -39,7 +39,7 @@ We have designed an interactive web visualization project that showcases aspects
    
 4. **INDUSTRIAL SECTOR (Elizabeth Koch):**
    - Vacancy & Rent Growth Rates in 6 Markets
-   - National Absorption, New Supply (LHS), and Availability Rate 
+   - National Absorption, New Supply, and Availability Rate 
 
 ### **RECOMMENDATION**
 
