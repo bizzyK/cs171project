@@ -22,14 +22,25 @@
 We have designed an interactive web visualization project to showcase aspects of Commercial Real Estate in Canada. Our primary target audience are real estate investors who understand the nuanced variables and ideas presented in this project. 
 
 
-### **VISUALIZATIONS**
+### VISUALIZATIONS
 
-1. **MACROECONOMICS IN CANADA (Jessica Giochoco):** It highlights the recent movement patterns in critical macroeconomic variables:`Gross Domestic Product (GDP)` in Canada, `unemployment rate`, `mortgage rates` and `consumer spending`. 
+1. **MACROECONOMICS IN CANADA (Jessica Giochoco):**
+   - Gross Domestic Product (GDP)
+   - Consumer Spending
+   - Mortgage Rate
+   - Unemployment Rates
 
-2. **INVESTMENT PERFORMANCE (Naina Garg):** It highlights the `capital value` invested across four major real estate sectors (**Industrial, Office, Retail, Residential**) and six major markets (**VECTOM: Vancouver, Edmonton, Calgary, Toronto, Ottawa, Montreal**) and how each of these have performed in terms of `income return`, `capital growth` and `total return`.
+2. **SECTOR & MARKET INFO (Elizabeth Koch):**
+   - Market & Sector Infographic
+   - Canadian Population Growth
+
+3. **INVESTMENT PERFORMANCE (Naina Garg):**
+   - Capital Value for Sectors and Markets
+   - Income return, Capital growth, and Total return for Sectors and Markets
    
-3. **INDUSTRIAL SECTOR (Elizabeth Koch):** It highlights the impact of `vacancy rates` and `rent growth` in the Industrial sector across the six VECTOM markets as well as nationally.
-
+4. **INDUSTRIAL SECTOR (Elizabeth Koch):**
+   - Vacancy & Rent Growth Rates in 6 Markets
+   - National Absorption, New Supply (LHS), and Availability Rate 
 
 ### **RECOMMENDATION**
 
@@ -37,5 +48,5 @@ We recommend investing in the industrial real estate sector in Canada. Through a
 
 
 ### **ACKNOWLEDGMENTS**
-The majority of our data was provided by a private equity real estate company. We also obtained some publicaly available data from Statistics Canada. Due to the proprietary nature of our datasets, we strongly advise the user to not distribute or publish our datasets in any form or on any platform.
+The majority of our data was provided by a private equity real estate company. We also obtained some publicly available data from Statistics Canada. Due to the proprietary nature of our datasets, we strongly advise the user to not distribute or publish our datasets in any form or on any platform.
 
