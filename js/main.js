@@ -190,32 +190,32 @@ function initMainPage(dataArray) {
         dotObserver.observe(section);
     });
 
-// Button for national graph scroll
-    function toggleScrollButtons(show) {
-        let leftButton = document.getElementById('scroll-left');
-        let rightButton = document.getElementById('scroll-right');
-        if (show) {
-            leftButton.style.display = 'block';
-            rightButton.style.display = 'block';
-        } else {
-            leftButton.style.display = 'none';
-            rightButton.style.display = 'none';
-        }
-    }
-
-// Initialize an IntersectionObserver for the national graph scroll
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                toggleScrollButtons(true);
-            } else {
-                toggleScrollButtons(false);
-            }
-        });
-    }, {threshold: [0.5]});
-
-    let target = document.querySelector('#national-vis2');
-    scrollObserver.observe(target);
+// // Button for national graph scroll
+//     function toggleScrollButtons(show) {
+//         let leftButton = document.getElementById('scroll-left');
+//         let rightButton = document.getElementById('scroll-right');
+//         if (show) {
+//             leftButton.style.display = 'block';
+//             rightButton.style.display = 'block';
+//         } else {
+//             leftButton.style.display = 'none';
+//             rightButton.style.display = 'none';
+//         }
+//     }
+//
+// // Initialize an IntersectionObserver for the national graph scroll
+//     const scrollObserver = new IntersectionObserver((entries) => {
+//         entries.forEach((entry) => {
+//             if (entry.isIntersecting) {
+//                 toggleScrollButtons(true);
+//             } else {
+//                 toggleScrollButtons(false);
+//             }
+//         });
+//     }, {threshold: [0.5]});
+//
+//     let target = document.querySelector('#national-vis2');
+//     scrollObserver.observe(target);
 
 // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
