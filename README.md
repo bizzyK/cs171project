@@ -1,6 +1,6 @@
 ## **IN WHAT REAL ESTATE SECTOR SHOULD YOU INVEST AND NOT INVEST IN CANADA?**
 
-1. Live website: [click here!](https://project171.github.io/design-invest/)
+1. Live website: [click here!](https://bizzyk.github.io/cs171project/)
 2. 2-minute Video: [click here!](https://youtube.com)
 
 
