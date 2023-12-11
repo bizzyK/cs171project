@@ -23,7 +23,7 @@ We have designed an interactive web visualization project that showcases aspects
 
 ### VISUALIZATIONS
 
-1. **MACROECONOMICS IN CANADA (Jessica Giochoco):**
+1. **MACROECONOMICS IN CANADA (Jessica Gochioco):**
    - Gross Domestic Product (GDP)
    - Consumer Spending
    - Mortgage Rate
