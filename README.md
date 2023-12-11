@@ -1,7 +1,8 @@
 ## **Commercial Real Estate in Canada: Where should you invest?**
 
-1. Live website: [click here!](https://bizzyk.github.io/cs171project/)
-2. 2-minute Video: [click here!](https://youtube.com)
+1. [Live website](https://bizzyk.github.io/cs171project/)
+2. [2-minute Video](https://youtube.com)
+3. [Process Book](process-book.md)
 
 ## **TECHNICAL DETAILS**
 
