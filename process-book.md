@@ -624,3 +624,5 @@ Implement the intended changes and check them off your list (e.g., adding “don
 | 5 | Change the storyline to be more targeted towards our industrial recommendation | - [x] |
 | 6 | Add one-liner headings for our recommendations | - [x] |
 
+
+A new plan for the final data story has been [outlined here.](https://docs.google.com/document/d/1aTbLRYf8mVpiMR-pNL7By7SwbFvoJImXEhAgnt8hHrI/edit?usp=sharing)
