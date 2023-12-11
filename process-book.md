@@ -2,6 +2,15 @@
 
 To view live website [click here!](https://bizzyk.github.io/cs171project/)
 
+### Table of Contents
+- [WEEK 8](#week-8)
+- [WEEK 9](#week-9)
+- [WEEK 10](#week-10)
+- [WEEK 11](#week-11)
+- [WEEK 12](#week-12)
+- [WEEK 13](#week-13)
+
+
 **CS171 Design Sprint Process Book**
 
 ## **PROJECT NAME: Invest Real Estate**
@@ -18,7 +27,7 @@ Our motivation to pursue this project stems from a desire and need to educate bo
 
 We have also been able to procure a private equity company’s data that they are willing to let us use publically for our project. We will dedicate at least one full section of our visualization on presenting visualization as seen from the lens of a real private equity real estate fund.
 
-## WEEK 8
+## WEEK 8 {#week-8}
 
 
 ## **TEAM AGREEMENT**
@@ -166,7 +175,7 @@ The extent of data cleaning required may vary based on the datasets we choose to
 * **Retail**: Grocery-anchored [https://www.matthews.com/grocery-anchored-retail/](https://www.matthews.com/grocery-anchored-retail/)
 * **Residential**: Mutlifamily [https://multifamily.fanniemae.com/news-insights/multifamily-market-commentary/2023-multifamily-market-outlook-turbulence-ahead](https://multifamily.fanniemae.com/news-insights/multifamily-market-commentary/2023-multifamily-market-outlook-turbulence-ahead)
 
-## WEEK 9
+## WEEK 9 {#week-9}
 
 
 ## **PROJECT MAP:**
@@ -257,7 +266,7 @@ My Tableau visualizations evolved from the team's broader questions to focus on 
 
 This was an interesting experience to go through. The reason why my graphs differ from our questions is because although our ideas have no limit, what I could actually create and visualize is bounded by our data. I may have wanted to make comparisons between the four different sectors, but sometimes we’d be missing data for a sector so I would settle for just comparing two, like in the first graph. In the second graph, I was able to keep with the theme of helping investors with sector-based recommendations, but I deviated with the third graph because I found the staggering difference between renting and owning to be very powerful and really wanted to integrate it.
 
-## WEEK 10
+## WEEK 10 {#week-10}
 
 
 ## **SKETCHES** AND **QUESTIONS:**
@@ -375,7 +384,7 @@ The storyboard we've crafted aims to succinctly yet comprehensively convey these
 
 ## **STORYBOARD SKETCH**
 
-## WEEK 11 
+## WEEK 11  {#week-11}
 
 
 ## PROTOTYPE 1:
@@ -434,7 +443,183 @@ Each of the sector graphs would show (and explain with short commentary) how sec
     * Each member created one visualization with Naina’s being related to investment performance, Jessica’s being based on the macroeconomic dashboard showing historical GDP since 1980 to 2023 and Elizabeth’s sector outlook showing the movements of the four real estate sectors and how they have been affected by various sector-specific variables such as rent growth, vacancy rates etc.
     * Naina’s visualization has the innovative aspect of being a play, pause, resume, play again and view by year animation feature for the investment returns observed in Canada’s real estate markets since 2001. This has not been done in Tableau during our course and we wished to implement it to expose another use case in Javascript with D3.
 
-## WEEK 12
+## WEEK 12 {#week-12}
 
 ## PROTOTYPE 2:
-To view live website [click here!](https://csci-171.github.io/di/)
+To view live website prototype [click here!](https://csci-171.github.io/di/)
+
+Our visualization project is ambitious and exciting. We do have work left to do to satisfy our vision for the project. However, this week it was not due to a lack of effort. On the contrary, this week, we have achieved the following:
+
+**GitHub repo:**
+
+
+
+* **Elizabeth **has created a GitHub repo from scratch and built an entire scaffold with placeholders and deployed it on Github with several interesting visualizations: [https://csci-171.github.io/di/](https://csci-171.github.io/di/)
+
+**Visualization Updates:**
+
+
+
+* **Jessica** has accomplished work on her macro dashboard which shows four different interlinked charts.
+* **Elizabeth** has set up a GitHub repo as well as built a secondary scaffold which provides a very useful layout that we will integrate into the original project.
+* **Elizabeth** has also set up a dynamic map using Leaflet to locate the 6 major real estate markets (Toronto, Vancouver, Calgary, Ottawa, Montreal, Edmonton) of great interest to investors.
+* **Naina** has completed the innovative bubble chart animation visualization and added another dropdown dataset selected option to it while making the visuals more color-coded, dynamic and interlinked.
+* **Naina** has created a brush stacked bar visualization to present interesting insights on real estate returns using event listeners to create html elements. She is currently completing a dynamically linked interactive lollipop graph.. 
+* **Naina** has updated our original project scaffold to use a slide-show in a carousel format with navigation bars that allows the user to not only click and view sections of interest one-by-one by also to scroll within sections to learn more details about each section through sub-section visualization.
+* **The team** has started work to place all newly refreshed and created visualizations there.
+
+We are also creating several other visualizations to surface more insight about Canadian real estate markets such as creating a completely new visualization with a possible heatmap graph (**Naina**) as well as a few other novel visualizations for introduction and other sections.
+
+Some of the other work that remains is adding more supporting text between visualizations, which will serve to further drive our points and connect one visualization to another. Some of the visualizations we proposed may not be completed (such as the “Canada map” introduction page visualization or the heatmap), but we are well on our way to creating an entire storyline.
+
+**Project Scaffold and Other Items:**
+
+Due to potential communication errors, the team has set up two standalone draft versions of the project scaffold. However, given their similarity, the goal would be to integrate them into one.
+
+
+1. **Scaffold 1:** The user will find a dynamically interlinked macro dashboard in this scaffold that **Jessica **has worked on and that **Elizabeth **has built and added placeholders in for the other sections of our project including a great recommendation table.
+2. **Scaffold 2:** Some of the other implemented visualizations are submitted in the second scaffold that we have been polishing and updating for our submissions for several sections including Investment Performance which include animation visualizations that **Naina **has built with a drop down, play, pause, resume, play again, change by year functionality that allows the user to switch between the size markets and four sector datasets with ease. The second implemented visualization in this section that **Naina ** has also included is a stacked bar chart with a novel market animation line with interactive legend which shows the full history of returns. The user can brush this stacked animation graph to view the split by the 6 markets and 4 sectors for a time period of choice. 
+3. **Other Sections:**
+    1. **Introduction:** Similar to other major sections in our project, this section will house several subsections (introduction interactive map, 2-minute video presentation, executive summary text) that will provide the overall lay of the land in Canadian real estate markets of interest.
+    2. **Recommendations and Acknowledgements: ** We have also nearly finished our recommendations and acknowledgements sections in the original project scaffold that **Naina **has been working on though more work will be accomplished over the coming days.
+
+**Remaining action items for the final push**
+
+We encountered an issue with variables sharing the same names and HTML elements sharing IDs that will require further refactoring work, which is why we are yet to integrate our scaffolds into a single piece, and the novel graphs are not available there. There are also placeholders for other sections, and we may cut some visualizations out if required by time constraints, without hurting the overall narrative that we wish to present.
+
+
+## WEEK 13 {#week-13}
+
+## THINK-ALOUD STUDY:
+
+1st STUDY: Tester: ANA 
+
+2nd STUDY: Tester: JOELLE CAYEN
+
+
+
+General Observations from the think-aloud study?
+
+Ana
+
+Liked the cover page, especially the map of Canada, but expected it to be interactive.
+
+Economic forces section was perceived as text-heavy and slightly unengaging.
+
+Joelle
+
+Enjoyed the visual appeal, especially the interactive features and animations that Naina created for the Performance sections.
+
+Found some aspects of the GDP section unclear.
+
+Both
+
+Both testers were impressed by the colorful and visually appealing cover page.
+
+There was a shared interest in more interactive elements, particularly in the map and Macro dashboard and Sectors sections.
+
+Both highlighted the need for clarity in the data presentation, especially in the Macro dashboard (GDP and economic forces) sections.
+
+
+
+Overall, the team genuinely valued the chance to collect feedback from a fresh set of eyes!
+
+
+
+What improvements does the tester point out? 
+
+Cover Page
+
+Ana – Thought our map of Canada was interactive.
+
+Joelle – Thought our map of Canada was too distracting (too much going on with all of the colors and text). 
+
+Economic Forces
+
+Both – Too much text
+
+Macro Graph
+
+Anna – Coloring needs adjustment, confusion about y-axis on the GDP graph. Add legends.
+
+Sectors
+
+Ana – Uncertainty about its interactivity; suggestion for a tooltip and a linked map for a clearer understanding.
+
+Recommendations
+
+Ana – Introduce catchy one-liners
+
+Overall
+
+Joelle – Recommended improvements in text size and readability, including the possibility of year selection in visualizations.
+
+
+
+
+
+Was the intended key message clear to the tester? Why or why not?
+
+The intended message was not immediately clear to the user although they did see that we were telling a story about the Canadian real estate markets as it relates to four sectors (Residential, Retail, Industrial, Office) and six markets (Vancouver, Toronto, Montreal, Calgary, Edmonton, Ottawa). 
+
+
+
+Did the tester get your next steps or call to action? Why or why not?
+
+The testers did understand our recommendations, though they suggested we transform our headings to punchy one-liners.
+
+
+
+What does the tester like about your data story?
+
+Overall, the testers liked some of the visual aspects and were quite impressed by our advanced visualizations. It seems that the story aspect was not clear, but we were able to reel them back in with the recommendations page.
+
+
+
+## PROCESS BOOK QUESTIONS:
+
+Discuss the results of the think-aloud study in your team. In your process book, answer the following questions:
+
+
+
+Based on the results of your ‘think aloud’ study, what would you improve in your data story? 
+
+Interactive Elements: Increase interactivity, especially in maps and graphs, as testers expected more dynamic features.
+
+Text Density and Clarity: Reduce and segment heavy text sections, focusing on concise, impactful messaging.
+
+Graphical Representation: Adjust colors and contrasts in graphs for better clarity and understanding.
+
+Narrative Flow: Enhance the linkage between slides or sections to create a more coherent and flowing narrative.
+
+
+
+Are there any additional insights and visualizations you would use? Would you amplify or change your message? Did your narrative work? Did the tester get your takeaways?
+
+We have introduced explanatory pop-ups for more complex data points.
+
+Overall, our testers did understand the key takeaways thanks to our more interactive animation visualizations and recommendation page; we have also now made the overall story simpler and more direct.
+
+Decide as a team which of these improvements you will implement and write down your decisions and why you made them in your process book as a numbered list.
+
+
+| # | Decision | Reasoning |
+|---|----------|-----------|
+| 1 | Replace picture map with an interactive map of Canada | We want something eye-catching and interesting, that grounds our project in the subject of real estate in Canada. |
+| 2 | Distribute the Economic Forces text amongst different sections of the macro dashboard so that it’s easier to digest | We want to keep the information, but we want to decrease the information density by spreading and delivering it to our audience in more bite-sized pieces. |
+| 3 | Add a legend and change the coloring of the macro dashboard. Also, add more labels in general. | The macro dashboard currently does not explain itself well and would be much improved with these additions. |
+| 4 | Make the sector dashboard more interactive and focused on the regions of interest | Although Canada is a large country, our markets of interest are geographically concentrated in specific areas so it looks a bit odd to have so much empty space. |
+| 5 | Change the storyline to be more targeted towards our industrial recommendation | It seems that we have a lot of information, so we’ve decided to scale back and focus our recommendation on one sector (instead of four sectors). |
+| 6 | Add one-liner headings for our recommendations | Although our recommendations are clear, we got direct feedback to further simplify into one-liners. This will help make our message even clearer. |
+
+
+Implement the intended changes and check them off your list (e.g., adding “done”). You can distribute the tasks among your team members. If you are unable to implement specific changes, please explain why and describe the expected results in your process book.
+
+| # | Task | Finished? |
+|---|------|-----------|
+| 1 | Replace picture map with an interactive map of Canada | - [x] |
+| 2 | Distribute the Economic Forces text amongst different sections of the macro dashboard so that it’s easier to digest | - [x] |
+| 3 | Add a legend and change the coloring of the macro dashboard. Also, add more labels in general. | - [x] |
+| 4 | Make the sector dashboard more interactive and focused on the regions of interest | We changed this to just industrial instead of the four sectors |
+| 5 | Change the storyline to be more targeted towards our industrial recommendation | - [x] |
+| 6 | Add one-liner headings for our recommendations | - [x] |
