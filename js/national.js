@@ -12,15 +12,15 @@ class dualChart {
         this.mColor = _colors.mColor;
         this.dataAttributes = {
             'Absorption (LHS)': {
-                color: _colors.cColor,
+                color: _colors.mColor,
                 // Any other attributes you want to store for Absorption
             },
             'New Supply (LHS)': {
-                color: _colors.mColor,
+                color: _colors.vColor,
                 // Any other attributes you want to store for New Supply
             },
             'Availability Rate (RHS)': {
-                color: _colors.vColor,
+                color: _colors.cColor,
                 // Any other attributes you want to store for Availability Rate
             }
         };
@@ -28,18 +28,6 @@ class dualChart {
 
         this.loadData();
         this.initVis();
-        const { currentYear, currentQuarter } = this.getCurrentQuarter();
-
-        // Find the index of the data entry that matches the current time
-        const currentIndex = this.data.findIndex(d => {
-            const year = d.parsedDate.getFullYear();
-            const quarter = Math.ceil((d.parsedDate.getMonth() + 1) / 3);
-            return year === currentYear && quarter === currentQuarter;
-        });
-
-        this.visibleYears = 5; // Or any other number of years you want to display
-        this.startIndex = Math.max(0, currentIndex - this.visibleYears * 4);
-
     }
 
 
@@ -83,26 +71,28 @@ class dualChart {
 
         // Ensure that data is sorted by parsedDate
         vis.data.sort((a, b) => a.parsedDate - b.parsedDate);
-        // Find the current year
-        const currentYear = new Date().getFullYear();
-
-        // Calculate the start year (6 years ago)
-        vis.startYear = currentYear - 5; // Subtract 5 because the current year is included
-
-        // Filter the data to include only the last 6 years
-        vis.data = vis.data.filter(d => {
-            const year = d.parsedDate.getFullYear();
-            return year >= vis.startYear && year <= currentYear;
-        });
-
-        console.log("Filtered data for 5 years =", vis.data);
+        // // Find the current year
+        // const currentYear = new Date().getFullYear();
+        //
+        // // Calculate the start year (6 years ago)
+        // vis.startYear = currentYear - 5; // Subtract 5 because the current year is included
+        //
+        // // Filter the data to include only the last 6 years
+        // vis.data = vis.data.filter(d => {
+        //     const year = d.parsedDate.getFullYear();
+        //     return year >= vis.startYear && year <= currentYear;
+        // });
+        //
+        // console.log("Filtered data for 6 years =", vis.data);
     }
 
 
     initVis() {
 
         let vis = this;
-        vis.legendY = - 10;
+        vis.startIndex = 0; // Initialize startIndex
+        vis.visibleYears = 5; // Set the number of years you want to display
+        vis.legendY = - 30;
 
         console.log("vis.data=", vis.data);
 
@@ -137,7 +127,7 @@ class dualChart {
 
         vis.y0 = d3.scaleLinear().range([vis.height, 0]);
         vis.y1 = d3.scaleLinear().range([vis.height, 0]);
-        vis.color = d3.scaleOrdinal().range([vis.cColor, vis.mColor, vis.vColor]);
+        vis.color = d3.scaleOrdinal().range([vis.vColor, vis.cColor, vis.mColor]);
 
         // Axes
         vis.xAxis = d3.axisBottom(vis.x0)
@@ -149,7 +139,8 @@ class dualChart {
 
         vis.yAxisLeft = d3.axisLeft(vis.y0)
             .tickSize(2)
-            .tickPadding(2);
+            .tickPadding(2)
+            .tickFormat(customY0Format);
         vis.yAxisRight = d3.axisRight(vis.y1)
             .tickSize(2)
             .tickPadding(2)
@@ -157,7 +148,6 @@ class dualChart {
 
         vis.svg.append("g")
             .attr("class", "x axis")
-            .style("fill", vis.textColor)
             .attr("transform", "translate(0," + vis.height + ")");
 
         vis.svg.append("g")
@@ -166,7 +156,7 @@ class dualChart {
             .append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", -45)
-            .attr("y", -80)
+            .attr("y", -60)
             .attr("dy", "1em")
             .style("text-anchor", "end")
             .attr("fill", "currentColor")
@@ -188,6 +178,60 @@ class dualChart {
             .text("Availability Rate (RHS)");
 
 
+
+        //Define the starting position for the legend
+        vis.legendStartingX = 160;
+        vis.legendY = -15; // Y position for the legend
+        vis.legendSpacing = 150; // Space between legend items
+
+
+        // Legend
+        vis.legend = vis.svg.selectAll(".legend")
+            .data(vis.keys) // Use the keys from the dataAttributes
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) {
+                return "translate(" + (vis.legendStartingX + i * vis.legendSpacing) + "," + vis.legendY + ")";
+            });
+
+        vis.legend.append("rect")
+            .attr("x", 0)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", function(d) { return vis.dataAttributes[d].color; });
+
+        vis.legend.append("text")
+            .attr("x", 24) // Position the text to the right of the rectangle
+            .attr("y", 9)
+            .attr("dy", ".35em")
+            .style("text-anchor", "start") // Align text to start at the given x position
+            .style("fill", vis.textColor)
+            .text(function(d) { return d; });
+
+
+        // Add click event listeners for legend items
+        vis.legend.on("click", function(event, d) {
+            // Replace or remove invalid characters to form a valid class selector
+            vis.validClassName = d.replace(/\s+/g, '-').toLowerCase().replace(/[()]/g, '');
+
+            vis.barSelector = `.bar.${vis.validClassName}`;
+            vis.lineSelector = `.line-${vis.validClassName}`;
+            vis.circleSelector = `.circle-${vis.validClassName}`;
+
+            // Now you can toggle each group separately, or combine them in a single selection
+            vis.svg.selectAll(vis.barSelector + ", " + vis.lineSelector + ", " + vis.circleSelector)
+                .style("display", function() {
+                    // If any one is visible, assume all need to be toggled off, and vice versa
+                    return d3.select(this).style("display") === "none" ? "block" : "none";
+                });
+
+            // Toggle the class on the legend item for visual feedback
+            d3.select(this).classed("active-legend", function() {
+                return !d3.select(this).classed("active-legend");
+            });
+        });
+
         vis.initButtons();
         vis.wrangleData();
 
@@ -197,7 +241,6 @@ class dualChart {
     initButtons() {
         let vis = this; // Reference to the class instance for use in event handlers
 
-
         // Attach event listeners to buttons
         d3.select('#scroll-left').on('click', function () {
             vis.scrollLeft();
@@ -205,61 +248,45 @@ class dualChart {
         d3.select('#scroll-right').on('click', function () {
             vis.scrollRight();
         });
-
-
     }
 
     // noinspection JSVoidFunctionReturnValueUsed
-    wrangleData() {
+    wrangleData(arrayLike) {
         let vis = this;
 
+        // Sort the data by parsedDate
+        vis.data.sort((a, b) => a.parsedDate - b.parsedDate);
 
-        // Create a nested structure: an array of years, each with an array of quarters
-        vis.nestedData = Array.from(d3.group(vis.data, d => d3.timeFormat("%Y")(d.parsedDate)), ([key, value]) => ({
+        // Assuming your data is already loaded and contains all the quarters from 2018 to Q3 2023,
+        // filter the data to this range if necessary. If your data set is already correct, you can omit this step.
+        let startPeriod = vis.parseQuarter("Q1 2018");
+        let endPeriod = vis.parseQuarter("Q3 2023");
+        vis.displayData = vis.data.filter(d => d.parsedDate >= startPeriod && d.parsedDate <= endPeriod);
+
+        // Create a nested structure: an array of years, each with an array of quarters from the filtered displayData
+        vis.nestedData = Array.from(d3.group(vis.displayData, d => d3.timeFormat("%Y")(d.parsedDate)), ([key, value]) => ({
             key,
             values: value
         }));
 
-        // Sort the nested data by year
-        vis.nestedData.sort((a, b) => d3.ascending(a.key, b.key));
-        // Update the domain of the x0 scale to include only the years in the filtered data
-        //vis.x0.domain(vis.nestedData.map(d => d.key).filter(year => year >= vis.startYear));
+        // The newDomain should reflect all years and quarters in the filtered data
+        vis.newDomain = vis.nestedData.map(d => d.key);
 
-        console.log("Nested data values: ", vis.nestedData.map(yearObj => yearObj.values.map(quarterObj => quarterObj.values.map(v => `${v.name}: ${v.value}`))));
-
-
-        const slicedData = vis.nestedData.slice(vis.startIndex, vis.startIndex + vis.visibleYears);
-        console.log("Sliced Data: ", slicedData);
-
-        vis.newDomain = slicedData.map(d => d.key);
-        console.log("New Domain: ", vis.newDomain);
-
-        // Update the domain of the x0 scale based on the startIndex and visibleYears
-        vis.newDomain = vis.nestedData.slice(vis.startIndex, vis.startIndex + vis.visibleYears).map(d => d.key);
+        // Update the domain of the x0 scale
         vis.x0.domain(vis.newDomain);
 
-        // Calculate the new domains for y0 and y1 scales after slicing the data
-        let y0Values = [];
-        let y1Values = [];
-
-        slicedData.forEach(year => {
-            year.values.forEach(quarter => {
-                quarter.values.forEach(d => {
-                    if (d.name !== 'Availability Rate (RHS)') {
-                        y0Values.push(d.value);
-                    } else {
-                        y1Values.push(d.value);
-                    }
-                });
-            });
-        });
+        // Calculate the new domains for y0 and y1 scales after updating the data
+        let y0Values = vis.displayData.map(d => d.values.filter(v => v.name === 'Absorption (LHS)' || v.name === 'New Supply (LHS)').map(v => v.value)).flat();
+        let y1Values = vis.displayData.map(d => d.values.filter(v => v.name === 'Availability Rate (RHS)').map(v => v.value)).flat();
 
         // Update the domains of y0 and y1 scales
-        vis.y0.domain([0, d3.max(y0Values)]).nice();
+        vis.y0.domain([d3.min(y0Values), d3.max(y0Values)]).nice(); // y0 should include both positive and negative values if they exist
         vis.y1.domain([0, d3.max(y1Values)]).nice();
 
+        // Update the axes with the new scale
         vis.svg.select(".x.axis").call(vis.xAxis);
-
+        vis.svg.select(".y0.axis").call(d3.axisLeft(vis.y0));
+        vis.svg.select(".y1.axis").call(d3.axisRight(vis.y1));
 
         // Update the chart with the new data
         vis.updateVis();
@@ -272,18 +299,18 @@ class dualChart {
         let vis = this;
 
         // Set the domains for the scales
-        vis.years = Array.from(d3.group(vis.nestedData, d => d3.timeFormat("%Y")(d.parsedDate)).keys());
+        vis.years = Array.from(d3.group(vis.displayData, d => d3.timeFormat("%Y")(d.parsedDate)).keys());
         vis.quarters = ['Q1', 'Q2', 'Q3', 'Q4'];
 
         // Find the min and max values for the y0 scale
-        vis.minValue = d3.min(vis.data, d => d3.min(d.values, v => v.value));
-        vis.maxValue = d3.max(vis.data, d => d3.max(d.values, v => v.value));
+        vis.minValue = d3.min(vis.displayData, d => d3.min(d.values, v => v.value));
+        vis.maxValue = d3.max(vis.displayData, d => d3.max(d.values, v => v.value));
 
         // Set the domain for the y0 scale
         vis.y0.domain([vis.minValue, vis.maxValue]).nice();
         vis.x1.domain(vis.quarters).rangeRound([0, vis.x0.bandwidth()]);
         //vis.y0.domain([0, d3.max(vis.data, d => d3.max(d.values, v => v.value))]);
-        vis.y1.domain([0, d3.max(vis.data, d => d.values.find(v => v.name === 'Availability Rate (RHS)').value)]);
+        vis.y1.domain([0, d3.max(vis.displayData, d => d.values.find(v => v.name === 'Availability Rate (RHS)').value)]);
 
 
         // Update axes
@@ -292,38 +319,16 @@ class dualChart {
         vis.svg.select(".y1.axis").call(vis.yAxisRight);
 
 
-        // console.log("vis.nestedData=", vis.nestedData);
-        //
-        // // Debugging: Log the data to see if it's structured correctly
-        // console.log(vis.nestedData.map(d => d.values.map(v => `${v.name}: ${v.value}`)));
-        // console.log("Nested data values: ", vis.nestedData.map(yearObj => yearObj.values.map(quarterObj => quarterObj.values.map(v => `${v.name}: ${v.value}`))));
-        //
-
-        // vis.barGroups = vis.svg.selectAll(".bar-group")
-        //     .data(vis.nestedData)
-        //     .enter()
-        //     .append("g")
-        //     .attr("class", "bar-group")
-        //     .attr("transform", function (d) {
-        //         // Debugging: Log the value being used in the translate function
-        //         console.log("Transforming group with key:", d.key, "x0 position:", vis.x0(d.key));
-        //         return `translate(${vis.x0(d.key)},0)`;
-        //     });
-
-        // Update pattern for bar groups
         vis.barGroups = vis.svg.selectAll(".bar-group")
-            .data(vis.nestedData, d => d.key);
-
-        vis.barGroups.exit().remove();
-
-        let barGroupsEnter = vis.barGroups.enter()
+            .data(vis.nestedData)
+            .enter()
             .append("g")
-            .attr("class", "bar-group");
-
-        vis.barGroups = barGroupsEnter.merge(vis.barGroups);
-
-        vis.barGroups.attr("transform", d => `translate(${vis.x0(d.key)},0)`);
-
+            .attr("class", "bar-group")
+            .attr("transform", function (d) {
+                // Debugging: Log the value being used in the translate function
+                console.log("Transforming group with key:", d.key, "x0 position:", vis.x0(d.key));
+                return `translate(${vis.x0(d.key)},0)`;
+            });
 
         // Loop through each year group
         vis.barGroups.each(function (yearData) {
@@ -380,10 +385,15 @@ class dualChart {
         });
 
         // Create the line generator for Availability Rate
-        vis.lineData = vis.data.map(d => ({
-            date: d.date,
-            value: d.values.find(v => v.name === 'Availability Rate (RHS)').value
-        }));
+        // Flatten the nestedData for the line
+        vis.lineData = vis.nestedData.flatMap(yearData =>
+            yearData.values.map(quarterData => ({
+                date: quarterData.date,
+                value: quarterData.values.find(v => v.name === 'Availability Rate (RHS)').value
+            }))
+        );
+
+
 
         vis.lineGenerator = d3.line()
             .x(d => {
@@ -396,27 +406,33 @@ class dualChart {
             })
             .y(d => vis.y1(d.value));
 
-       /* // Draw the line for Availability Rate
+
+        // Add a console log here to check the output of the line generator
+        console.log("Line Generator Output:", vis.lineGenerator(vis.lineData));
+
+
+
+        // Draw the line for Availability Rate
         vis.svg.append("path")
-            .datum(vis.lineData) // bind the processed data to the path
+            .datum(vis.lineData) // This binds the array of data for the line
             .attr("class", "line-availability-rate")
             .attr("d", vis.lineGenerator)
-            .style("stroke", vis.vColor)
-            .style("stroke-width", "2px")
-            .style("fill", "none");*/
-
-        // Update the line for Availability Rate (RHS)
-        let line = vis.svg.selectAll(".line-availability-rate")
-            .data([vis.lineData], d => d.date);
-
-        line.enter()
-            .append("path")
-            .attr("class", "line-availability-rate")
-            .merge(line)
-            .attr("d", vis.lineGenerator)
-            .style("stroke", vis.vColor)
+            .style("stroke", vis.cColor)
             .style("stroke-width", "2px")
             .style("fill", "none");
+
+
+        // Draw the circles for Availability Rate
+
+
+
+        // vis.svg.append("path")
+        //     .datum(vis.lineData) // bind the processed data to the path
+        //     .attr("class", "line-availability-rate")
+        //     .attr("d", vis.lineGenerator)
+        //     .style("stroke", vis.cColor)
+        //     .style("stroke-width", "2px")
+        //     .style("fill", "none");
 
         // Draw the circles for Availability Rate
         vis.svg.selectAll(".circle-availability-rate")
@@ -434,88 +450,21 @@ class dualChart {
             })
             .attr("cy", d => vis.y1(d.value))
             .attr("r", 4)
-            .style("fill", vis.tColor)
+            .style("fill", vis.cColor)
             .style("stroke", vis.backgroundColor)
-            .style("stroke-width", "1px");
+            .style("stroke-width", "2px");
 
-        // Update axes with new scales
-        vis.svg.select(".y0.axis").call(vis.yAxisLeft);
-        vis.svg.select(".y1.axis").call(vis.yAxisRight);
 
-        vis.renderLegend();
+
+
+
+
+
 
     }
 
-    renderLegend() {
-        let vis = this;
-
-        vis.svg.selectAll(".legend").remove();
-
-        // Create a group for the legend
-        //Define the starting position for the legend
-        const legendStartingX = 160;
-        //const legendY = -15; // Y position for the legend
-        const legendSpacing = 150; // Space between legend items
-
-        // Legend
-        vis.legend = vis.svg.selectAll(".legend")
-            .data(vis.keys) // Use the keys from the dataAttributes
-            .enter()
-            .append("g")
-            .attr("class", "legend")
-            .attr("transform", function(d, i) {
-            return "translate(" + (legendStartingX + i * legendSpacing) + "," + vis.legendY + ")";
-        });
-
-
-        vis.legend.append("rect")
-            .attr("x", 0)
-            .attr("width", 18)
-            .attr("height", 18)
-            .style("fill", function(d) { return vis.dataAttributes[d].color; });
-
-        vis.legend.append("text")
-            .attr("x", 24) // Position the text to the right of the rectangle
-            .attr("y", 9)
-            .attr("dy", ".35em")
-            .style("text-anchor", "start") // Align text to start at the given x position
-            .attr("fill", "currentColor")
-            .text(function(d) { return d; });
-    }
-
-    //Determine the Current Time
-     getCurrentQuarter() {
-        const currentDate = new Date();
-        const currentYear = currentDate.getFullYear();
-        const currentQuarter = Math.floor((currentDate.getMonth() + 3) / 3);
-        return { currentYear, currentQuarter };
-    }
-
-    // // Scroll left function
-    // scrollLeft() {
-    //     let vis = this;
-    //     console.log("Scrolling left"); // Add this line
-    //     // Ensure we don't go past the beginning of the data array
-    //     if (vis.startIndex >= 4) {
-    //         vis.startIndex -= 4; // Move back one year (4 quarters)
-    //         vis.wrangleData();
-    //     }
-    //     console.log("Updated startIndex after scrolling left:", vis.startIndex);
-    // }
-    //
-    // // Scroll right function
-    // scrollRight() {
-    //     let vis = this;
-    //     console.log("Scrolling right"); // Add this line
-    //     // Ensure we don't go past the end of the data array
-    //     if (vis.startIndex <= vis.nestedData.length - vis.visibleYears * 4) {
-    //         vis.startIndex += 4; // Move forward one year (4 quarters)
-    //         vis.wrangleData();
-    //     }
-    //     console.log("Updated startIndex after scrolling right:", vis.startIndex);
-    // }
-
-    scrollLeft() {
+    scrollLeft()
+    {
         console.log("Scrolling left");
         if (this.startIndex > 0) {
             this.startIndex = Math.max(0, this.startIndex - 4); // Move back one year
@@ -524,8 +473,10 @@ class dualChart {
         console.log("Updated startIndex after scrolling left:", this.startIndex);
     }
 
-    scrollRight() {
-        const maxIndex = this.data.length - this.visibleYears * 4;
+    scrollRight()
+    {
+        const maxIndex = this.data.length - 20; // Since you want to show 20 quarters at a time
+        console.log("Total data length:", this.data.length);
         console.log("Scrolling right");
         if (this.startIndex < maxIndex) {
             this.startIndex = Math.min(maxIndex, this.startIndex + 4); // Move forward one year
@@ -537,3 +488,6 @@ class dualChart {
 
 }
 
+function customY0Format(d) {
+    return d3.format(".2s")(d).replace(/G$/, "B");
+}

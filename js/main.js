@@ -14,10 +14,10 @@ let geoDataPath = "data/canada.topo.json";
 let populationDataPath = "data/canada_provinces_pop.csv";
 
 let macroTooltipText = {
-    macro: "macro filler text",
-    consumer: "consumer filler text",
-    unemployment: "unemployment filler text",
-    mortgage: "mortgage filler text"
+    macro: "A strong economy generally leads to higher demand for commercial real estate. As businesses grow and expand, they require more office space, retail locations, warehouses, etc. An increase in GDP often correlates with increased commercial activity and real estate demand.",
+    consumer: "Consumer spending significantly impacts the Canadian Commercial Real Estate Market, directly affecting retail spaces and indirectly influencing other sectors, thereby shaping market trends and the demand-supply dynamics of commercial properties.",
+    unemployment: "Higher employment rates can lead to increased demand for office and retail spaces, as more businesses open and existing businesses expand to accommodate a larger workforce.",
+    mortgage: "Interest rates significantly impact the real estate market; lower rates reduce borrowing costs, boosting investment, while higher rates can suppress demand by increasing financing costs."
 };
 
 let promises = [
@@ -214,7 +214,7 @@ function initMainPage(dataArray) {
         });
     }, {threshold: [0.5]});
 
-    let target = document.querySelector('#national-vis');
+    let target = document.querySelector('#national-vis2');
     scrollObserver.observe(target);
 
 // Smooth scrolling for navigation links
