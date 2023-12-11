@@ -2,7 +2,7 @@
 
 1. [Live website](https://bizzyk.github.io/cs171project/)
 2. [2-minute Video](https://youtube.com)
-3. Process Book: [Web](process-book.md) or [PDF](Process-Book_ Invest Real Estate.pdf)
+3. Process Book: [Web](process-book.md) or [PDF](Process_Book_ Invest Real Estate.pdf)
 
 ## **TECHNICAL DETAILS**
 
