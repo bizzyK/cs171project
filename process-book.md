@@ -27,7 +27,7 @@ Our motivation to pursue this project stems from a desire and need to educate bo
 
 We have also been able to procure a private equity company’s data that they are willing to let us use publically for our project. We will dedicate at least one full section of our visualization on presenting visualization as seen from the lens of a real private equity real estate fund.
 
-## WEEK 8 {#week-8}
+## WEEK 8
 
 
 ## **TEAM AGREEMENT**
@@ -175,7 +175,7 @@ The extent of data cleaning required may vary based on the datasets we choose to
 * **Retail**: Grocery-anchored [https://www.matthews.com/grocery-anchored-retail/](https://www.matthews.com/grocery-anchored-retail/)
 * **Residential**: Mutlifamily [https://multifamily.fanniemae.com/news-insights/multifamily-market-commentary/2023-multifamily-market-outlook-turbulence-ahead](https://multifamily.fanniemae.com/news-insights/multifamily-market-commentary/2023-multifamily-market-outlook-turbulence-ahead)
 
-## WEEK 9 {#week-9}
+## WEEK 9
 
 
 ## **PROJECT MAP:**
@@ -266,7 +266,7 @@ My Tableau visualizations evolved from the team's broader questions to focus on 
 
 This was an interesting experience to go through. The reason why my graphs differ from our questions is because although our ideas have no limit, what I could actually create and visualize is bounded by our data. I may have wanted to make comparisons between the four different sectors, but sometimes we’d be missing data for a sector so I would settle for just comparing two, like in the first graph. In the second graph, I was able to keep with the theme of helping investors with sector-based recommendations, but I deviated with the third graph because I found the staggering difference between renting and owning to be very powerful and really wanted to integrate it.
 
-## WEEK 10 {#week-10}
+## WEEK 10
 
 
 ## **SKETCHES** AND **QUESTIONS:**
@@ -384,7 +384,7 @@ The storyboard we've crafted aims to succinctly yet comprehensively convey these
 
 ## **STORYBOARD SKETCH**
 
-## WEEK 11  {#week-11}
+## WEEK 11
 
 
 ## PROTOTYPE 1:
@@ -443,7 +443,7 @@ Each of the sector graphs would show (and explain with short commentary) how sec
     * Each member created one visualization with Naina’s being related to investment performance, Jessica’s being based on the macroeconomic dashboard showing historical GDP since 1980 to 2023 and Elizabeth’s sector outlook showing the movements of the four real estate sectors and how they have been affected by various sector-specific variables such as rent growth, vacancy rates etc.
     * Naina’s visualization has the innovative aspect of being a play, pause, resume, play again and view by year animation feature for the investment returns observed in Canada’s real estate markets since 2001. This has not been done in Tableau during our course and we wished to implement it to expose another use case in Javascript with D3.
 
-## WEEK 12 {#week-12}
+## WEEK 12
 
 ## PROTOTYPE 2:
 To view live website prototype [click here!](https://csci-171.github.io/di/)
@@ -488,7 +488,7 @@ Due to potential communication errors, the team has set up two standalone draft 
 We encountered an issue with variables sharing the same names and HTML elements sharing IDs that will require further refactoring work, which is why we are yet to integrate our scaffolds into a single piece, and the novel graphs are not available there. There are also placeholders for other sections, and we may cut some visualizations out if required by time constraints, without hurting the overall narrative that we wish to present.
 
 
-## WEEK 13 {#week-13}
+## WEEK 13
 
 ## THINK-ALOUD STUDY:
 
