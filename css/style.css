@@ -435,6 +435,14 @@ strong {
     background-attachment: fixed;
 }
 
+.speech-bubble {
+    background-color: var(--color6);
+    border: 1px solid var(--color-text);
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--color-text);
+}
+
 .vis-container1 {
     display: flex;
     flex-wrap: wrap;
