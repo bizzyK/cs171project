@@ -497,71 +497,49 @@ We encountered an issue with variables sharing the same names and HTML elements 
 2nd STUDY: Tester: JOELLE CAYEN
 
 
-
 General Observations from the think-aloud study?
 
 Ana
 
-Liked the cover page, especially the map of Canada, but expected it to be interactive.
-
-Economic forces section was perceived as text-heavy and slightly unengaging.
+ - Liked the cover page, especially the map of Canada, but expected it to be interactive.
+ - Economic forces section was perceived as text-heavy and slightly unengaging.
 
 Joelle
-
-Enjoyed the visual appeal, especially the interactive features and animations that Naina created for the Performance sections.
-
-Found some aspects of the GDP section unclear.
+ - Enjoyed the visual appeal, especially the interactive features and animations that Naina created for the Performance sections.
+ - Found some aspects of the GDP section unclear.
 
 Both
-
-Both testers were impressed by the colorful and visually appealing cover page.
-
-There was a shared interest in more interactive elements, particularly in the map and Macro dashboard and Sectors sections.
-
-Both highlighted the need for clarity in the data presentation, especially in the Macro dashboard (GDP and economic forces) sections.
-
-
+ - Both testers were impressed by the colorful and visually appealing cover page.
+ - There was a shared interest in more interactive elements, particularly in the map and Macro dashboard and Sectors sections.
+ - Both highlighted the need for clarity in the data presentation, especially in the Macro dashboard (GDP and economic forces) sections.
 
 Overall, the team genuinely valued the chance to collect feedback from a fresh set of eyes!
 
 
-
 What improvements does the tester point out? 
-
 Cover Page
-
-Ana – Thought our map of Canada was interactive.
-
-Joelle – Thought our map of Canada was too distracting (too much going on with all of the colors and text). 
+ - Ana – Thought our map of Canada was interactive.
+ - Joelle – Thought our map of Canada was too distracting (too much going on with all of the colors and text). 
 
 Economic Forces
-
-Both – Too much text
+ - Both – Too much text
 
 Macro Graph
-
-Anna – Coloring needs adjustment, confusion about y-axis on the GDP graph. Add legends.
+ - Anna – Coloring needs adjustment, confusion about y-axis on the GDP graph. Add legends.
 
 Sectors
-
-Ana – Uncertainty about its interactivity; suggestion for a tooltip and a linked map for a clearer understanding.
+ - Ana – Uncertainty about its interactivity; suggestion for a tooltip and a linked map for a clearer understanding.
 
 Recommendations
-
-Ana – Introduce catchy one-liners
+ - Ana – Introduce catchy one-liners
 
 Overall
-
-Joelle – Recommended improvements in text size and readability, including the possibility of year selection in visualizations.
-
-
-
+ - Joelle – Recommended improvements in text size and readability, including the possibility of year selection in visualizations.
 
 
 Was the intended key message clear to the tester? Why or why not?
 
 The intended message was not immediately clear to the user although they did see that we were telling a story about the Canadian real estate markets as it relates to four sectors (Residential, Retail, Industrial, Office) and six markets (Vancouver, Toronto, Montreal, Calgary, Edmonton, Ottawa). 
-
 
 
 Did the tester get your next steps or call to action? Why or why not?
@@ -596,9 +574,8 @@ Narrative Flow: Enhance the linkage between slides or sections to create a more 
 
 Are there any additional insights and visualizations you would use? Would you amplify or change your message? Did your narrative work? Did the tester get your takeaways?
 
-We have introduced explanatory pop-ups for more complex data points.
-
-Overall, our testers did understand the key takeaways thanks to our more interactive animation visualizations and recommendation page; we have also now made the overall story simpler and more direct.
+ - We have introduced explanatory pop-ups for more complex data points.
+ - Overall, our testers did understand the key takeaways thanks to our more interactive animation visualizations and recommendation page; we have also now made the overall story simpler and more direct.
 
 Decide as a team which of these improvements you will implement and write down your decisions and why you made them in your process book as a numbered list.
 
